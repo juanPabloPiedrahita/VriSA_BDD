@@ -1,0 +1,5 @@
+Django>=4.2
+djangorestframework
+psycopg2-binary
+django-cors-headers
+#django.contrib.gis --Se supone que esta libreria ayudaria al manejo de Postgis con DJango pero Pip no encuentra ninguna por eso nombre, luego lo arreglamos.
