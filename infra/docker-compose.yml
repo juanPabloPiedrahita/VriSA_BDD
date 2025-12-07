@@ -25,11 +25,18 @@ services:
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ../backend:/app
+      - /app/__pycache__
     ports:
       - "8000:8000"
     depends_on:
       - db
       - redis
+    environment:
+      - DB_HOST=db
+      - DB_NAME=vrisa
+      - DB_USER=vrisa_user
+      - DB_PASSWORD=vrisa_pass
+      - DB_PORT=5432
 
   frontend:
     build: ../frontend

@@ -1,7 +1,18 @@
 FROM python:3.12-slim
 
+#Instala dependencias y librerias necesarias para GIS y PostGIS en Django, ojo esto es pesado ya que usa apt-get ya que estas no se encuentran en pip. XD (ahi van como 2gb)
 RUN apt-get update && apt-get install -y \
-    binutils libproj-dev gdal-bin gcc python3-dev musl-dev
+    gcc \
+    gdal-bin \
+    libgdal-dev \
+    libproj-dev \
+    proj-bin \
+    libgeos-dev \
+    libpq-dev \
+    python3-dev \
+    binutils \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 

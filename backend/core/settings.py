@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-8*jqdu+_m*ibs#nof3rj1w_@_&--b9h=igd17*+k@a(r@_6%%o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'api',
+    'django.contrib.gis',
+    'core'
 ]
 
 MIDDLEWARE = [
@@ -74,8 +78,13 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': os.environ.get("DB_NAME", "vrisa"),
+        'USER': os.environ.get("DB_USER", "vrisa_user"),
+        'PASSWORD': os.environ.get("DB_PASSWORD", "vrisa_pass"),
+        'HOST': os.environ.get("DB_HOST", "db"),
+        'PORT': os.environ.get("DB_PORT", 5432),
+
     }
 }
 
