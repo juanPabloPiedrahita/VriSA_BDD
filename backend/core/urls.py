@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api.views import test_redis
+from api.views import health_check #Importa la vista de health_check, para el endpoint de verificacion de salud
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('test-redis/', test_redis),
+    path('health/', health_check),
 ]
