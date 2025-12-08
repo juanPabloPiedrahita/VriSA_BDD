@@ -1,5 +1,21 @@
-Django>=4.2
-djangorestframework
-psycopg2-binary
-django-cors-headers
-#django.contrib.gis --Se supone que esta libreria ayudaria al manejo de Postgis con DJango pero Pip no encuentra ninguna por eso nombre, luego lo arreglamos.
+#Este archivo contiene las dependencias necesarias para el proyecto Django, incluyendo las librerias para trabajar con GIS y Redis.
+Django>=4.2,<5.0
+psycopg2-binary==2.9.9
+django-environ==0.11.2 
+djangorestframework>=3.14.0
+djangorestframework-gis==1.0
+djangorestframework-simplejwt>=5.3.0
+django-filter==23.3
+django-cors-headers==4.3.0
+redis==5.0.1
+django-redis==5.4.0
+django-debug-toolbar==4.2.0
+ipython==8.17.2
+pytest==7.4.3
+pytest-django==4.7.0
+factory-boy==3.3.0
+flake8==6.1.0
+black==23.11.0
+drf-yasg==1.21.7
+PyJWT
+setuptools>=65.5.0

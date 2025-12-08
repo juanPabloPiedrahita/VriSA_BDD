@@ -1,0 +1,237 @@
+INFO 2025-12-08 18:15:13,538 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 18:15:41,909 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-12-08 18:15:42,210 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 18:23:50,828 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-12-08 18:23:51,310 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 18:37:24,560 autoreload /usr/local/lib/python3.12/site-packages/rest_framework/__init__.py changed, reloading.
+INFO 2025-12-08 18:37:24,813 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 18:37:26,023 autoreload /usr/local/lib/python3.12/site-packages/rest_framework_gis/apps.py changed, reloading.
+INFO 2025-12-08 18:37:26,316 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 18:52:36,692 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 18:54:55,077 basehttp "GET /health/ HTTP/1.1" 200 65
+ERROR 2025-12-08 18:55:20,305 log Internal Server Error: /api/auth/register/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/api/authentication.py", line 90, in register_user
+    refresh = RefreshToken.for_user(user)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework_simplejwt/tokens.py", line 344, in for_user
+    OutstandingToken.objects.create(
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/query.py", line 658, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/base.py", line 543, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<User: John Doe <john@example.com>>": "OutstandingToken.user" must be a "User" instance.
+ERROR 2025-12-08 18:55:20,307 basehttp "POST /api/auth/register/ HTTP/1.1" 500 117947
+INFO 2025-12-08 18:56:43,279 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-12-08 18:56:44,042 autoreload Watching for file changes with StatReloader
+WARNING 2025-12-08 18:56:53,701 log Bad Request: /api/auth/register/
+WARNING 2025-12-08 18:56:53,701 basehttp "POST /api/auth/register/ HTTP/1.1" 400 50
+WARNING 2025-12-08 18:57:11,266 log Bad Request: /api/auth/login/
+WARNING 2025-12-08 18:57:11,267 basehttp "POST /api/auth/login/ HTTP/1.1" 400 40
+WARNING 2025-12-08 18:57:41,277 log Unauthorized: /api/admins/
+WARNING 2025-12-08 18:57:41,278 basehttp "POST /api/admins/ HTTP/1.1" 401 107
+ERROR 2025-12-08 19:11:42,397 log Internal Server Error: /api/auth/login/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework_simplejwt/views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/serializers.py", line 447, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/app/api/authentication.py", line 50, in validate
+    refresh = self.get_token(user)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/app/api/authentication.py", line 19, in get_token
+    token = super().get_token(user)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework_simplejwt/serializers.py", line 66, in get_token
+    return cls.token_class.for_user(user)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework_simplejwt/tokens.py", line 344, in for_user
+    OutstandingToken.objects.create(
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/query.py", line 658, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/base.py", line 543, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<User: John Doe <john@example.com>>": "OutstandingToken.user" must be a "User" instance.
+ERROR 2025-12-08 19:11:42,402 basehttp "POST /api/auth/login/ HTTP/1.1" 500 145
+INFO 2025-12-08 19:26:29,141 autoreload /app/api/views.py changed, reloading.
+INFO 2025-12-08 19:26:29,858 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 19:32:04,695 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 19:33:18,390 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 19:35:49,617 basehttp "GET /health/ HTTP/1.1" 200 65
+INFO 2025-12-08 19:36:30,589 basehttp "GET /health/ HTTP/1.1" 200 65
+INFO 2025-12-08 19:36:30,607 basehttp "GET / HTTP/1.1" 200 1055
+ERROR 2025-12-08 19:36:30,773 log Internal Server Error: /api/auth/register/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/api/authentication.py", line 90, in register_user
+    refresh = RefreshToken.for_user(user)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework_simplejwt/tokens.py", line 344, in for_user
+    OutstandingToken.objects.create(
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/query.py", line 658, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/base.py", line 543, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/usr/local/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<User: Test User <test@vrisa.com>>": "OutstandingToken.user" must be a "User" instance.
+ERROR 2025-12-08 19:36:30,780 basehttp "POST /api/auth/register/ HTTP/1.1" 500 145
+WARNING 2025-12-08 19:36:30,796 log Bad Request: /api/auth/login/
+WARNING 2025-12-08 19:36:30,796 basehttp "POST /api/auth/login/ HTTP/1.1" 400 40
+WARNING 2025-12-08 19:36:30,811 log Unauthorized: /api/auth/verify/
+WARNING 2025-12-08 19:36:30,812 basehttp "GET /api/auth/verify/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:30,828 log Unauthorized: /api/users/me/
+WARNING 2025-12-08 19:36:30,828 basehttp "GET /api/users/me/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:30,844 log Unauthorized: /api/admins/
+WARNING 2025-12-08 19:36:30,845 basehttp "POST /api/admins/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:30,862 log Bad Request: /api/auth/login/
+WARNING 2025-12-08 19:36:30,863 basehttp "POST /api/auth/login/ HTTP/1.1" 400 40
+WARNING 2025-12-08 19:36:30,880 log Unauthorized: /api/admins/
+WARNING 2025-12-08 19:36:30,881 basehttp "GET /api/admins/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:30,898 log Unauthorized: /api/auth-users/
+WARNING 2025-12-08 19:36:30,898 basehttp "POST /api/auth-users/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:30,915 log Unauthorized: /api/auth-users/
+WARNING 2025-12-08 19:36:30,916 basehttp "GET /api/auth-users/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:30,933 log Unauthorized: /api/institutions/
+WARNING 2025-12-08 19:36:30,934 basehttp "POST /api/institutions/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:30,953 log Unauthorized: /api/institutions/
+WARNING 2025-12-08 19:36:30,955 basehttp "GET /api/institutions/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:30,971 log Not Found: /api/institutions//
+WARNING 2025-12-08 19:36:30,972 basehttp "GET /api/institutions// HTTP/1.1" 404 179
+WARNING 2025-12-08 19:36:30,987 log Unauthorized: /api/institutions/
+WARNING 2025-12-08 19:36:30,987 basehttp "GET /api/institutions/?verified=true HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,003 log Unauthorized: /api/stations/
+WARNING 2025-12-08 19:36:31,003 basehttp "POST /api/stations/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,018 log Unauthorized: /api/stations/
+WARNING 2025-12-08 19:36:31,018 basehttp "GET /api/stations/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,033 log Not Found: /api/stations//
+WARNING 2025-12-08 19:36:31,034 basehttp "GET /api/stations// HTTP/1.1" 404 179
+WARNING 2025-12-08 19:36:31,048 log Unauthorized: /api/stations/
+WARNING 2025-12-08 19:36:31,049 basehttp "GET /api/stations/?status=active HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,065 log Unauthorized: /api/stations/
+WARNING 2025-12-08 19:36:31,066 basehttp "GET /api/stations/?search=centro HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,081 log Unauthorized: /api/stations/nearby/
+WARNING 2025-12-08 19:36:31,082 basehttp "GET /api/stations/nearby/?lat=3.4516&lon=-76.5319&radius=5000 HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,099 log Unauthorized: /api/devices/
+WARNING 2025-12-08 19:36:31,100 basehttp "POST /api/devices/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,118 log Unauthorized: /api/devices/
+WARNING 2025-12-08 19:36:31,118 basehttp "GET /api/devices/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,136 log Unauthorized: /api/devices/
+WARNING 2025-12-08 19:36:31,136 basehttp "GET /api/devices/?station= HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,154 log Unauthorized: /api/alerts/
+WARNING 2025-12-08 19:36:31,154 basehttp "POST /api/alerts/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,171 log Not Found: /api/alerts//pollutants/
+WARNING 2025-12-08 19:36:31,171 basehttp "POST /api/alerts//pollutants/ HTTP/1.1" 404 179
+WARNING 2025-12-08 19:36:31,188 log Not Found: /api/alerts//
+WARNING 2025-12-08 19:36:31,189 basehttp "GET /api/alerts// HTTP/1.1" 404 179
+WARNING 2025-12-08 19:36:31,205 log Not Found: /api/stations//alerts/
+WARNING 2025-12-08 19:36:31,205 basehttp "GET /api/stations//alerts/ HTTP/1.1" 404 179
+WARNING 2025-12-08 19:36:31,222 log Unauthorized: /api/alerts/
+WARNING 2025-12-08 19:36:31,222 basehttp "GET /api/alerts/?attended=false HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,239 log Not Found: /api/alerts//mark-attended/
+WARNING 2025-12-08 19:36:31,239 basehttp "POST /api/alerts//mark-attended/ HTTP/1.1" 404 179
+WARNING 2025-12-08 19:36:31,257 log Not Found: /api/stations//grant-access/
+WARNING 2025-12-08 19:36:31,258 basehttp "POST /api/stations//grant-access/ HTTP/1.1" 404 179
+WARNING 2025-12-08 19:36:31,276 log Unauthorized: /api/station-consults/
+WARNING 2025-12-08 19:36:31,276 basehttp "GET /api/station-consults/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,293 log Not Found: /api/alerts//notify/
+WARNING 2025-12-08 19:36:31,294 basehttp "POST /api/alerts//notify/ HTTP/1.1" 404 179
+WARNING 2025-12-08 19:36:31,310 log Unauthorized: /api/alert-receives/
+WARNING 2025-12-08 19:36:31,311 basehttp "GET /api/alert-receives/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,328 log Unauthorized: /api/institutions/
+WARNING 2025-12-08 19:36:31,329 basehttp "POST /api/institutions/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,346 log Unauthorized: /api/stations/
+WARNING 2025-12-08 19:36:31,347 basehttp "GET /api/stations/ HTTP/1.1" 401 58
+WARNING 2025-12-08 19:36:31,364 log Unauthorized: /api/stations/
+WARNING 2025-12-08 19:36:31,364 basehttp "GET /api/stations/?page=1&page_size=5 HTTP/1.1" 401 58
