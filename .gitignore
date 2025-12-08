@@ -1,2 +1,4 @@
 /mobile/node_modules/@react-native/debugger-frontend/dist/third-party/front_end/models/crux-manager/crux-manager.js
 
+
+infra/vrisa_test_script.sh #Este archivo es una serie de comandos para probar el backend de VRISA

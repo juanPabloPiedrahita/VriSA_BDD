@@ -1,3 +1,5 @@
+#Este es el archivo docker-compose.yml que define los servicios de la aplicacion VRISA: base de datos PostGIS, cache Redis, backend Django y frontend React. Infra es de infrastructura, XD.
+
 version: "3.9"
 
 services:
@@ -11,21 +13,21 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data #Ocho, aqui se guarda la data de la base de datos
     
-    healthcheck:
+    healthcheck: #Esto es un healthcheck para asegurarse de que la base de datos este lista antes de que el backend intente conectarse
       test: ["CMD-SHELL", "pg_isready -U vrisa_user -d vrisa"]
       interval: 5s
       timeout: 5s
       retries: 5
 
   redis:
-    image: redis:7
+    image: redis:7 #Redis es un sistema de almacenamiento en cache en memoria, yauda a mejorar el rendimiento de la aplicacion
     container_name: vrisa_redis
     ports:
       - "6379:6379"
 
-  backend:
+  backend: #El servicio del backend, que corre Django
     build: ../backend
     container_name: vrisa_backend
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
@@ -40,18 +42,18 @@ services:
       redis:
         condition: service_started
     restart: on-failure
-    environment:
+    environment: #Aqui se definen las variables de entorno para la conexion a la base de datos
       - DB_HOST=db
       - DB_NAME=vrisa
       - DB_USER=vrisa_user
       - DB_PASSWORD=vrisa_pass
       - DB_PORT=5432
 
-  frontend:
+  frontend: #El servicio del frontend, que corre React
     build: ../frontend
     container_name: vrisa_frontend
     ports:
-      - "3000:3000"
+      - "3000:3000" #El frontend corre en el puerto 3000
     volumes:
       - ../frontend:/app
       - /app/node_modules
@@ -59,4 +61,4 @@ services:
       - backend
 
 volumes:
-  postgres_data:
+  postgres_data: #Volumen para persistir los datos de la base de datos Postgres
