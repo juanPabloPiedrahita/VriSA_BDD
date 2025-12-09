@@ -497,7 +497,6 @@ docker compose up
 * [X] Filtros, búsqueda y paginación
 * [X] Queries espaciales con PostGIS
 * [X] Sistema de alertas
-* [X] Testing automatizado (95% pass rate)
 
 ### 🚧 En Desarrollo
 
@@ -508,26 +507,12 @@ docker compose up
 * [ ] Ingesta de datos desde sensores
 * [ ] Reportes y exportación de datos
 
-### 📋 Por Hacer
-
-* [ ] WebSockets para updates en tiempo real
-* [ ] Sistema de mediciones históricas
-* [ ] Agregaciones y estadísticas
-* [ ] Mapas de calor (heatmaps)
-* [ ] Alertas automáticas por umbrales
-* [ ] Documentación API con Swagger
-* [ ] Tests unitarios y de integración
-* [ ] CI/CD Pipeline
-* [ ] Deployment a producción
-
----
-
 ## 👥 Equipo
 
 **Proyecto final - Curso de Bases de Datos**
 
-* **Desarrollador Backend** : [Tu Nombre]
-* **Institución** : [Universidad/Institución]
+* **Desarrollador Backend** : jppt
+* **Institución** : Univalle
 * **Fecha** : Diciembre 2024
 
 ---
