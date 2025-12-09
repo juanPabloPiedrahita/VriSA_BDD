@@ -152,9 +152,14 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 
-#Esto de aqui me lo sugirio ChatGPT para el futuro, es opcional, pero por ahora lo dejo comentado.
-# Custom User Model (si decides usarlo en el futuro)
-# AUTH_USER_MODEL = 'api.User'  # Descomentar si migras a este modelo -> hay que descomentar esta linea si se decide migrar a este modelo de usuario personalizado.
+#Custom Authentication Backend
+AUTHENTICATION_BACKENDS = [
+    'api.auth_backend.CustomUserBackend',  # Sistema de autenticacion custom
+    'django.contrib.auth.backends.ModelBackend',  # Django default (fallback)
+]
+
+# Usar el modelo custom de usuario
+AUTH_USER_MODEL = 'api.User'  
 
 # Logging (opcional pero recomendado)
 LOGGING = {

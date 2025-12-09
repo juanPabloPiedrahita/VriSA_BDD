@@ -235,3 +235,164 @@ WARNING 2025-12-08 19:36:31,346 log Unauthorized: /api/stations/
 WARNING 2025-12-08 19:36:31,347 basehttp "GET /api/stations/ HTTP/1.1" 401 58
 WARNING 2025-12-08 19:36:31,364 log Unauthorized: /api/stations/
 WARNING 2025-12-08 19:36:31,364 basehttp "GET /api/stations/?page=1&page_size=5 HTTP/1.1" 401 58
+INFO 2025-12-08 20:41:12,033 autoreload Watching for file changes with StatReloader
+INFO 2025-12-08 20:41:32,304 basehttp "GET /health/ HTTP/1.1" 200 65
+INFO 2025-12-08 20:44:16,250 basehttp "POST /api/auth/register/ HTTP/1.1" 201 695
+INFO 2025-12-08 20:44:35,207 basehttp "POST /api/auth/login/ HTTP/1.1" 200 948
+INFO 2025-12-08 20:44:58,919 basehttp "GET /health/ HTTP/1.1" 200 65
+INFO 2025-12-08 20:44:58,948 basehttp "GET / HTTP/1.1" 200 1055
+WARNING 2025-12-08 20:44:58,973 log Bad Request: /api/auth/register/
+WARNING 2025-12-08 20:44:58,974 basehttp "POST /api/auth/register/ HTTP/1.1" 400 50
+WARNING 2025-12-08 20:44:59,118 log Bad Request: /api/auth/login/
+WARNING 2025-12-08 20:44:59,119 basehttp "POST /api/auth/login/ HTTP/1.1" 400 44
+WARNING 2025-12-08 20:44:59,131 log Unauthorized: /api/auth/verify/
+WARNING 2025-12-08 20:44:59,132 basehttp "GET /api/auth/verify/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,145 log Unauthorized: /api/users/me/
+WARNING 2025-12-08 20:44:59,145 basehttp "GET /api/users/me/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,159 log Unauthorized: /api/admins/
+WARNING 2025-12-08 20:44:59,159 basehttp "POST /api/admins/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,183 log Bad Request: /api/auth/login/
+WARNING 2025-12-08 20:44:59,183 basehttp "POST /api/auth/login/ HTTP/1.1" 400 44
+WARNING 2025-12-08 20:44:59,197 log Unauthorized: /api/admins/
+WARNING 2025-12-08 20:44:59,197 basehttp "GET /api/admins/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,211 log Unauthorized: /api/auth-users/
+WARNING 2025-12-08 20:44:59,212 basehttp "POST /api/auth-users/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,226 log Unauthorized: /api/auth-users/
+WARNING 2025-12-08 20:44:59,226 basehttp "GET /api/auth-users/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,240 log Unauthorized: /api/institutions/
+WARNING 2025-12-08 20:44:59,240 basehttp "POST /api/institutions/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,253 log Unauthorized: /api/institutions/
+WARNING 2025-12-08 20:44:59,254 basehttp "GET /api/institutions/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,267 log Not Found: /api/institutions//
+WARNING 2025-12-08 20:44:59,267 basehttp "GET /api/institutions// HTTP/1.1" 404 179
+WARNING 2025-12-08 20:44:59,280 log Unauthorized: /api/institutions/
+WARNING 2025-12-08 20:44:59,281 basehttp "GET /api/institutions/?verified=true HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,294 log Unauthorized: /api/stations/
+WARNING 2025-12-08 20:44:59,294 basehttp "POST /api/stations/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,308 log Unauthorized: /api/stations/
+WARNING 2025-12-08 20:44:59,308 basehttp "GET /api/stations/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,321 log Not Found: /api/stations//
+WARNING 2025-12-08 20:44:59,321 basehttp "GET /api/stations// HTTP/1.1" 404 179
+WARNING 2025-12-08 20:44:59,334 log Unauthorized: /api/stations/
+WARNING 2025-12-08 20:44:59,334 basehttp "GET /api/stations/?status=active HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,349 log Unauthorized: /api/stations/
+WARNING 2025-12-08 20:44:59,349 basehttp "GET /api/stations/?search=centro HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,363 log Unauthorized: /api/stations/nearby/
+WARNING 2025-12-08 20:44:59,363 basehttp "GET /api/stations/nearby/?lat=3.4516&lon=-76.5319&radius=5000 HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,376 log Unauthorized: /api/devices/
+WARNING 2025-12-08 20:44:59,377 basehttp "POST /api/devices/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,389 log Unauthorized: /api/devices/
+WARNING 2025-12-08 20:44:59,389 basehttp "GET /api/devices/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,402 log Unauthorized: /api/devices/
+WARNING 2025-12-08 20:44:59,402 basehttp "GET /api/devices/?station= HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,415 log Unauthorized: /api/alerts/
+WARNING 2025-12-08 20:44:59,416 basehttp "POST /api/alerts/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,428 log Not Found: /api/alerts//pollutants/
+WARNING 2025-12-08 20:44:59,428 basehttp "POST /api/alerts//pollutants/ HTTP/1.1" 404 179
+WARNING 2025-12-08 20:44:59,441 log Not Found: /api/alerts//
+WARNING 2025-12-08 20:44:59,442 basehttp "GET /api/alerts// HTTP/1.1" 404 179
+WARNING 2025-12-08 20:44:59,455 log Not Found: /api/stations//alerts/
+WARNING 2025-12-08 20:44:59,455 basehttp "GET /api/stations//alerts/ HTTP/1.1" 404 179
+WARNING 2025-12-08 20:44:59,468 log Unauthorized: /api/alerts/
+WARNING 2025-12-08 20:44:59,468 basehttp "GET /api/alerts/?attended=false HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,482 log Not Found: /api/alerts//mark-attended/
+WARNING 2025-12-08 20:44:59,482 basehttp "POST /api/alerts//mark-attended/ HTTP/1.1" 404 179
+WARNING 2025-12-08 20:44:59,496 log Not Found: /api/stations//grant-access/
+WARNING 2025-12-08 20:44:59,496 basehttp "POST /api/stations//grant-access/ HTTP/1.1" 404 179
+WARNING 2025-12-08 20:44:59,509 log Unauthorized: /api/station-consults/
+WARNING 2025-12-08 20:44:59,510 basehttp "GET /api/station-consults/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,523 log Not Found: /api/alerts//notify/
+WARNING 2025-12-08 20:44:59,523 basehttp "POST /api/alerts//notify/ HTTP/1.1" 404 179
+WARNING 2025-12-08 20:44:59,536 log Unauthorized: /api/alert-receives/
+WARNING 2025-12-08 20:44:59,537 basehttp "GET /api/alert-receives/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,551 log Unauthorized: /api/institutions/
+WARNING 2025-12-08 20:44:59,551 basehttp "POST /api/institutions/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,564 log Unauthorized: /api/stations/
+WARNING 2025-12-08 20:44:59,565 basehttp "GET /api/stations/ HTTP/1.1" 401 58
+WARNING 2025-12-08 20:44:59,578 log Unauthorized: /api/stations/
+WARNING 2025-12-08 20:44:59,579 basehttp "GET /api/stations/?page=1&page_size=5 HTTP/1.1" 401 58
+INFO 2025-12-09 00:23:03,740 basehttp "GET /health/ HTTP/1.1" 200 65
+INFO 2025-12-09 00:23:03,778 basehttp "GET / HTTP/1.1" 200 1055
+INFO 2025-12-09 00:23:04,042 basehttp "POST /api/auth/register/ HTTP/1.1" 201 706
+INFO 2025-12-09 00:23:04,210 basehttp "POST /api/auth/login/ HTTP/1.1" 200 988
+INFO 2025-12-09 00:23:04,246 basehttp "GET /api/auth/verify/ HTTP/1.1" 200 220
+WARNING 2025-12-09 00:23:04,271 log Forbidden: /api/users/me/
+WARNING 2025-12-09 00:23:04,271 basehttp "GET /api/users/me/ HTTP/1.1" 403 63
+WARNING 2025-12-09 00:23:04,295 log Forbidden: /api/admins/
+WARNING 2025-12-09 00:23:04,296 basehttp "POST /api/admins/ HTTP/1.1" 403 63
+INFO 2025-12-09 00:23:04,443 basehttp "POST /api/auth/register/ HTTP/1.1" 201 706
+INFO 2025-12-09 00:23:04,594 basehttp "POST /api/auth/login/ HTTP/1.1" 200 988
+INFO 2025-12-09 00:23:04,654 basehttp "GET /api/institutions/ HTTP/1.1" 200 85
+WARNING 2025-12-09 00:23:04,683 log Forbidden: /api/stations/
+WARNING 2025-12-09 00:23:04,684 basehttp "GET /api/stations/ HTTP/1.1" 403 63
+WARNING 2025-12-09 00:23:04,708 log Forbidden: /api/stations/
+WARNING 2025-12-09 00:23:04,708 basehttp "GET /api/stations/?search=test HTTP/1.1" 403 63
+WARNING 2025-12-09 00:23:04,730 log Forbidden: /api/stations/nearby/
+WARNING 2025-12-09 00:23:04,730 basehttp "GET /api/stations/nearby/?lat=3.4516&lon=-76.5319&radius=5000 HTTP/1.1" 403 63
+WARNING 2025-12-09 00:23:04,753 log Forbidden: /api/devices/
+WARNING 2025-12-09 00:23:04,753 basehttp "GET /api/devices/ HTTP/1.1" 403 63
+WARNING 2025-12-09 00:23:04,778 log Forbidden: /api/alerts/
+WARNING 2025-12-09 00:23:04,778 basehttp "GET /api/alerts/ HTTP/1.1" 403 63
+WARNING 2025-12-09 00:23:04,799 log Forbidden: /api/alerts/
+WARNING 2025-12-09 00:23:04,799 basehttp "GET /api/alerts/?attended=false HTTP/1.1" 403 63
+WARNING 2025-12-09 00:23:04,811 log Unauthorized: /api/stations/
+WARNING 2025-12-09 00:23:04,812 basehttp "GET /api/stations/ HTTP/1.1" 401 58
+WARNING 2025-12-09 00:23:04,835 log Forbidden: /api/users/me/
+WARNING 2025-12-09 00:23:04,835 basehttp "GET /api/users/me/ HTTP/1.1" 403 63
+WARNING 2025-12-09 00:23:04,859 log Forbidden: /api/stations/
+WARNING 2025-12-09 00:23:04,859 basehttp "GET /api/stations/?page=1&page_size=5 HTTP/1.1" 403 63
+INFO 2025-12-09 00:23:04,903 basehttp "POST /api/auth/refresh/ HTTP/1.1" 200 782
+INFO 2025-12-09 00:54:32,342 autoreload /app/api/views.py changed, reloading.
+INFO 2025-12-09 00:54:33,988 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 01:01:44,130 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 01:02:21,146 autoreload Watching for file changes with StatReloader
+INFO 2025-12-09 01:03:18,376 basehttp "GET /health/ HTTP/1.1" 200 65
+INFO 2025-12-09 01:03:18,408 basehttp "GET / HTTP/1.1" 200 1055
+INFO 2025-12-09 01:03:18,580 basehttp "POST /api/auth/register/ HTTP/1.1" 201 706
+INFO 2025-12-09 01:03:18,745 basehttp "POST /api/auth/login/ HTTP/1.1" 200 988
+INFO 2025-12-09 01:03:18,781 basehttp "GET /api/auth/verify/ HTTP/1.1" 200 220
+INFO 2025-12-09 01:03:18,811 basehttp "GET /api/users/me/ HTTP/1.1" 200 198
+WARNING 2025-12-09 01:03:18,847 log Forbidden: /api/admins/
+WARNING 2025-12-09 01:03:18,847 basehttp "POST /api/admins/ HTTP/1.1" 403 63
+INFO 2025-12-09 01:03:19,002 basehttp "POST /api/auth/register/ HTTP/1.1" 201 706
+INFO 2025-12-09 01:03:19,162 basehttp "POST /api/auth/login/ HTTP/1.1" 200 988
+INFO 2025-12-09 01:03:19,200 basehttp "GET /api/institutions/ HTTP/1.1" 200 85
+INFO 2025-12-09 01:03:19,240 basehttp "GET /api/stations/ HTTP/1.1" 200 85
+INFO 2025-12-09 01:03:19,277 basehttp "GET /api/stations/?search=test HTTP/1.1" 200 85
+ERROR 2025-12-09 01:03:19,305 log Internal Server Error: /api/stations/nearby/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/api/views.py", line 365, in nearby
+    distance=models.functions.Distance('location', point)
+             ^^^^^^
+NameError: name 'models' is not defined
+ERROR 2025-12-09 01:03:19,310 basehttp "GET /api/stations/nearby/?lat=3.4516&lon=-76.5319&radius=5000 HTTP/1.1" 500 145
+INFO 2025-12-09 01:03:19,339 basehttp "GET /api/devices/ HTTP/1.1" 200 85
+INFO 2025-12-09 01:03:19,371 basehttp "GET /api/alerts/ HTTP/1.1" 200 85
+INFO 2025-12-09 01:03:19,404 basehttp "GET /api/alerts/?attended=false HTTP/1.1" 200 85
+WARNING 2025-12-09 01:03:19,419 log Unauthorized: /api/stations/
+WARNING 2025-12-09 01:03:19,420 basehttp "GET /api/stations/ HTTP/1.1" 401 58
+INFO 2025-12-09 01:03:19,451 basehttp "GET /api/users/me/ HTTP/1.1" 200 198
+INFO 2025-12-09 01:03:19,488 basehttp "GET /api/stations/?page=1&page_size=5 HTTP/1.1" 200 85
+INFO 2025-12-09 01:03:19,551 basehttp "POST /api/auth/refresh/ HTTP/1.1" 200 782
