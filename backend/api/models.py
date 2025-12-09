@@ -1,5 +1,30 @@
 from django.contrib.gis.db import models as geomodels
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+
+
+class UserManager(BaseUserManager):
+    """Manager for User model"""
+    
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('Email is required')
+        
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        
+        if password:
+            user.set_password(password)
+        
+        user.save(using=self._db)
+        return user
+    
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('role', 'admin')
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        
+        return self.create_user(email, password, **extra_fields)
 
 class PollutantType(models.TextChoices):
     PM25 = 'PM25', 'PM25'
@@ -14,16 +39,54 @@ class DeviceType(models.TextChoices):
     METEO  = 'METEO',  'METEO'
     OTHER  = 'OTHER',  'OTHER'
 
-class User(models.Model):
+class User(AbstractBaseUser, PermissionsMixin):
+    """
+    Custom User model that uses email instead of username.
+    Compatible with Django's authentication system.
+    """
     name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100, unique=True, db_index=True)
-    password_hash = models.TextField()
+    email = models.EmailField(max_length=100, unique=True, db_index=True)
+    password_hash = models.TextField(db_column='password_hash')  # Map to password field
     role = models.CharField(max_length=50, default='citizen')
+    
+    # Django auth required fields
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
+    objects = UserManager()
+    
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name']
+    
+    class Meta:
+        db_table = 'api_user'
+    
     def __str__(self):
         return f"{self.name} <{self.email}>"
+    
+    @property
+    def password(self):
+        """Map password to password_hash for Django auth"""
+        return self.password_hash
+    
+    @password.setter
+    def password(self, value):
+        """Map password setter to password_hash"""
+        self.password_hash = value
+    
+    def set_password(self, raw_password):
+        """Set password using Django's hash function"""
+        from django.contrib.auth.hashers import make_password
+        self.password_hash = make_password(raw_password)
+    
+    def check_password(self, raw_password):
+        """Check password using Django's check function"""
+        from django.contrib.auth.hashers import check_password
+        return check_password(raw_password, self.password_hash)
+
 
 class Admin(models.Model):
     access_level = models.IntegerField()
