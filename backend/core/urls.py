@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.http import JsonResponse
 from api.views import test_redis
-from api.views import health_check #Importa la vista de health_check, para el endpoint de verificacion de salud
+from api.views import health_check  #Importa la view de health_check, para el endpoint de verificacion de salud
 
 def health_check(request):
     """Simple health check endpoint"""

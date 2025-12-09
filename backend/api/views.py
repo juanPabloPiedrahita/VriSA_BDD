@@ -49,6 +49,7 @@ def health_check(request):
     
     return JsonResponse(result)
 
+
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -89,6 +90,7 @@ class UserViewSet(viewsets.ModelViewSet):
     - List/Retrieve: Admins only
     - Create: Public (registration)
     - Update/Delete: Owner or Admin
+    - me: Any authenticated user
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -101,12 +103,14 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         if self.action == 'create':
             return [AllowAny()]
+        elif self.action == 'me':
+            return [IsAuthenticated()]
         elif self.action in ['update', 'partial_update', 'destroy']:
             return [IsAuthenticated(), IsOwnerOrAdmin()]
         return [IsAuthenticated(), IsAdmin()]
     
     def get_serializer_class(self):
-        if self.action == 'retrieve':
+        if self.action == 'retrieve' or self.action == 'me':
             return UserDetailSerializer
         return UserSerializer
     
@@ -240,8 +244,8 @@ class InstitutionViewSet(viewsets.ModelViewSet):
 class StationViewSet(viewsets.ModelViewSet):
     """
     ViewSet for stations with spatial queries support.
-    - List/Retrieve: Auth users with access
-    - Create/Update: Station or Institution admins
+    - List/Retrieve: Any authenticated user (read-only for non-admins)
+    - Create/Update: Admins only
     - Delete: Institution admin only
     
     Custom actions:
@@ -250,17 +254,22 @@ class StationViewSet(viewsets.ModelViewSet):
     - nearby: Find stations within radius
     """
     queryset = Station.objects.select_related('institution', 'admin__user').prefetch_related('devices')
-    permission_classes = [IsAuthenticated, IsAdminOrAuthUser]
     pagination_class = StandardResultsSetPagination
     filter_backends = [SearchFilter, OrderingFilter, DjangoFilterBackend]
     filterset_class = StationFilter
     search_fields = ['name', 'address', 'institution__name']
     ordering_fields = ['created_at', 'name', 'installed_at', 'status']
     ordering = ['-created_at']
-
+    
+    def get_permissions(self):
+        # Read operations: any authenticated user
+        if self.action in ['list', 'retrieve', 'alerts', 'nearby']:
+            return [IsAuthenticated()]
+        # Write operations: admins only
+        return [IsAuthenticated(), IsAdmin()]
     
     def get_serializer_class(self):
-        if self.action == 'create' or self.action == 'update':
+        if self.action in ['create', 'update', 'partial_update']:
             return StationCreateSerializer
         elif self.action == 'retrieve':
             return StationDetailSerializer
@@ -269,21 +278,8 @@ class StationViewSet(viewsets.ModelViewSet):
         return StationSerializer
     
     def get_queryset(self):
-        """Filter stations based on user permissions"""
-        user = self.request.user
-        queryset = super().get_queryset()
-        
-        # Admins see all stations
-        if hasattr(user, 'admin_profile'):
-            return queryset
-        
-        # Auth users see only stations they have access to
-        if hasattr(user, 'auth_profile'):
-            return queryset.filter(
-                consults__auth_user=user.auth_profile
-            ).distinct()
-        
-        return queryset.none()
+        """All authenticated users can see all stations"""
+        return super().get_queryset()
     
     @action(detail=True, methods=['get'], url_path='alerts')
     def alerts(self, request, pk=None):
@@ -378,12 +374,11 @@ class StationViewSet(viewsets.ModelViewSet):
 class DeviceViewSet(viewsets.ModelViewSet):
     """
     ViewSet for devices.
-    - List/Retrieve: Users with access to the station
-    - Create/Update/Delete: Station admin
+    - List/Retrieve: Any authenticated user
+    - Create/Update/Delete: Admins only
     """
     queryset = Device.objects.select_related('station').all()
     serializer_class = DeviceSerializer
-    permission_classes = [IsAuthenticated, IsAdminOrAuthUser]
     pagination_class = StandardResultsSetPagination
     filter_backends = [SearchFilter, OrderingFilter, DjangoFilterBackend]
     filterset_class = DeviceFilter
@@ -391,23 +386,10 @@ class DeviceViewSet(viewsets.ModelViewSet):
     ordering_fields = ['created_at', 'install_date', 'type']
     ordering = ['-created_at']
     
-    def get_queryset(self):
-        """Filter devices based on station access"""
-        user = self.request.user
-        queryset = super().get_queryset()
-        
-        # Admins see all
-        if hasattr(user, 'admin_profile'):
-            return queryset
-        
-        # Auth users see devices from accessible stations
-        if hasattr(user, 'auth_profile'):
-            accessible_stations = Station.objects.filter(
-                consults__auth_user=user.auth_profile
-            )
-            return queryset.filter(station__in=accessible_stations)
-        
-        return queryset.none()
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [IsAuthenticated()]
+        return [IsAuthenticated(), IsAdmin()]
 
 
 # ==================== ALERT VIEWSETS ====================
@@ -415,6 +397,8 @@ class DeviceViewSet(viewsets.ModelViewSet):
 class AlertViewSet(viewsets.ModelViewSet):
     """
     ViewSet for alerts.
+    - List/Retrieve: Any authenticated user
+    - Create/Modify: Admins only
     
     Custom actions:
     - add_pollutants: POST /alerts/{id}/pollutants/
@@ -423,7 +407,6 @@ class AlertViewSet(viewsets.ModelViewSet):
     """
     queryset = Alert.objects.select_related('station').prefetch_related('pollutants').all()
     serializer_class = AlertSerializer
-    permission_classes = [IsAuthenticated, IsAdminOrAuthUser]
     pagination_class = StandardResultsSetPagination
     filter_backends = [SearchFilter, OrderingFilter, DjangoFilterBackend]
     filterset_class = AlertFilter
@@ -431,28 +414,15 @@ class AlertViewSet(viewsets.ModelViewSet):
     ordering_fields = ['alert_date', 'attended', 'created_at']
     ordering = ['-alert_date']
     
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [IsAuthenticated()]
+        return [IsAuthenticated(), IsAdmin()]
+    
     def get_serializer_class(self):
         if self.action == 'retrieve':
             return AlertDetailSerializer
         return AlertSerializer
-    
-    def get_queryset(self):
-        """Filter alerts based on station access"""
-        user = self.request.user
-        queryset = super().get_queryset()
-        
-        # Admins see all
-        if hasattr(user, 'admin_profile'):
-            return queryset
-        
-        # Auth users see alerts from accessible stations
-        if hasattr(user, 'auth_profile'):
-            accessible_stations = Station.objects.filter(
-                consults__auth_user=user.auth_profile
-            )
-            return queryset.filter(station__in=accessible_stations)
-        
-        return queryset.none()
     
     @action(detail=True, methods=['post'], url_path='pollutants')
     def add_pollutants(self, request, pk=None):
@@ -518,15 +488,6 @@ class AlertViewSet(viewsets.ModelViewSet):
             'receives': serializer.data
         }, status=status.HTTP_201_CREATED)
 
-    @action(detail=True, methods=['get'])
-    def stats(self, request, pk=None):
-        station = self.get_object()
-        return Response({
-            'total_alerts': station.alerts.count(),
-            'alerts_attended': station.alerts.filter(attended=True).count(),
-            'total_devices': station.devices.count(),
-            'active_devices': station.devices.filter(type='SENSOR').count(),
-        })
 
 # ==================== ALERT POLLUTANT VIEWSETS ====================
 
