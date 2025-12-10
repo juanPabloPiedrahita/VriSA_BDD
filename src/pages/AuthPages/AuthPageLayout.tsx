@@ -25,8 +25,11 @@ export default function AuthLayout({
                   alt="Logo"
                 />
               </Link>
-              <p className="text-center text-gray-400 dark:text-white/60">
-                Free and Open-Source Tailwind CSS Admin Dashboard Template
+              <h3 className="mb-2 text-2xl font-semibold text-center text-white dark:text-white">
+                Bienvenido a VriSA
+              </h3>
+              <p className="text-center text-white/90 dark:text-white/90">
+                Monitoreo y análisis de métricas clave de contaminación ambiental
               </p>
             </div>
           </div>

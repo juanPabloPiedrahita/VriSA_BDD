@@ -6,9 +6,9 @@ import MultiSelect from "../MultiSelect";
 
 export default function SelectInputs() {
   const options = [
-    { value: "marketing", label: "Marketing" },
-    { value: "template", label: "Template" },
-    { value: "development", label: "Development" },
+    { value: "principal", label: "Principal" },
+    { value: "local", label: "Local" },
+    { value: "basica", label: "Básica" },
   ];
   const handleSelectChange = (value: string) => {
     console.log("Selected value:", value);

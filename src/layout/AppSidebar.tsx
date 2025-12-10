@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router";
 // Assume these icons are imported from an icon library
 import {
   BoxCubeIcon,
-  CalenderIcon,
+  SearchIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
@@ -28,24 +28,25 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
-    name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+    name: "Resumen general",
+    subItems: [{ name: "Estadisticas", path: "/", pro: false }],
   },
   {
-    icon: <CalenderIcon />,
-    name: "Calendar",
+    name: "Registro de estaciones",
+    icon: <ListIcon />,
+    subItems: [{ name: "Registrar nueva estación", path: "/form-elements", pro: false }],
+  },
+  {
+    icon: <SearchIcon />,
+    name: "Consulta Historica",
     path: "/calendar",
   },
   {
     icon: <UserCircleIcon />,
-    name: "User Profile",
+    name: "Perfil de usuario",
     path: "/profile",
   },
-  {
-    name: "Forms",
-    icon: <ListIcon />,
-    subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
-  },
+  /*
   {
     name: "Tables",
     icon: <TableIcon />,
@@ -58,10 +59,10 @@ const navItems: NavItem[] = [
       { name: "Blank Page", path: "/blank", pro: false },
       { name: "404 Error", path: "/error-404", pro: false },
     ],
-  },
+  },*/
 ];
 
-const othersItems: NavItem[] = [
+/*const othersItems: NavItem[] = [
   {
     icon: <PieChartIcon />,
     name: "Charts",
@@ -90,7 +91,9 @@ const othersItems: NavItem[] = [
       { name: "Sign Up", path: "/signup", pro: false },
     ],
   },
-];
+]; */
+
+const othersItems: NavItem[] = [];
 
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();

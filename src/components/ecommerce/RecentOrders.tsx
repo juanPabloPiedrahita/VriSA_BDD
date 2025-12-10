@@ -1,3 +1,4 @@
+// ContaminationIndex.tsx
 import {
   Table,
   TableBody,
@@ -7,75 +8,144 @@ import {
 } from "../ui/table";
 import Badge from "../ui/badge/Badge";
 
-// Define the TypeScript interface for the table rows
-interface Product {
-  id: number; // Unique identifier for each product
-  name: string; // Product name
-  variants: string; // Number of variants (e.g., "1 Variant", "2 Variants")
-  category: string; // Category of the product
-  price: string; // Price of the product (as a string with currency symbol)
-  // status: string; // Status of the product
-  image: string; // URL or path to the product image
-  status: "Delivered" | "Pending" | "Canceled"; // Status of the product
+// Define the TypeScript interface for contamination data
+interface Contaminant {
+  id: number;
+  name: string;
+  scientificName: string;
+  currentLevel: number;
+  unit: string;
+  safeLimit: number;
+  status: "Bajo" | "Moderado" | "Alto" | "Muy Alto" | "Peligroso";
+  trend: "up" | "down" | "stable";
+  source: string;
 }
 
-// Define the table data using the interface
-const tableData: Product[] = [
+// Contamination data for Cali, Colombia based on current reports
+const contaminationData: Contaminant[] = [
   {
     id: 1,
-    name: "MacBook Pro 13”",
-    variants: "2 Variants",
-    category: "Laptop",
-    price: "$2399.00",
-    status: "Delivered",
-    image: "/images/product/product-01.jpg", // Replace with actual image URL
+    name: "PM2.5",
+    scientificName: "Partículas finas",
+    currentLevel: 28.5,
+    unit: "μg/m³",
+    safeLimit: 25,
+    status: "Moderado",
+    trend: "up",
+    source: "Tráfico vehicular, incendios"
   },
   {
     id: 2,
-    name: "Apple Watch Ultra",
-    variants: "1 Variant",
-    category: "Watch",
-    price: "$879.00",
-    status: "Pending",
-    image: "/images/product/product-02.jpg", // Replace with actual image URL
+    name: "PM10",
+    scientificName: "Partículas respirables",
+    currentLevel: 42.3,
+    unit: "μg/m³",
+    safeLimit: 50,
+    status: "Bajo",
+    trend: "stable",
+    source: "Polvo, construcción"
   },
   {
     id: 3,
-    name: "iPhone 15 Pro Max",
-    variants: "2 Variants",
-    category: "SmartPhone",
-    price: "$1869.00",
-    status: "Delivered",
-    image: "/images/product/product-03.jpg", // Replace with actual image URL
+    name: "NO₂",
+    scientificName: "Dióxido de nitrógeno",
+    currentLevel: 38.7,
+    unit: "μg/m³",
+    safeLimit: 40,
+    status: "Bajo",
+    trend: "down",
+    source: "Vehículos diesel"
   },
   {
     id: 4,
-    name: "iPad Pro 3rd Gen",
-    variants: "2 Variants",
-    category: "Electronics",
-    price: "$1699.00",
-    status: "Canceled",
-    image: "/images/product/product-04.jpg", // Replace with actual image URL
+    name: "O₃",
+    scientificName: "Ozono troposférico",
+    currentLevel: 65.2,
+    unit: "μg/m³",
+    safeLimit: 100,
+    status: "Moderado",
+    trend: "up",
+    source: "Reacciones químicas"
   },
   {
     id: 5,
-    name: "AirPods Pro 2nd Gen",
-    variants: "1 Variant",
-    category: "Accessories",
-    price: "$240.00",
-    status: "Delivered",
-    image: "/images/product/product-05.jpg", // Replace with actual image URL
+    name: "SO₂",
+    scientificName: "Dióxido de azufre",
+    currentLevel: 12.4,
+    unit: "μg/m³",
+    safeLimit: 20,
+    status: "Bajo",
+    trend: "stable",
+    source: "Industria, combustibles"
+  },
+  {
+    id: 6,
+    name: "CO",
+    scientificName: "Monóxido de carbono",
+    currentLevel: 1.8,
+    unit: "mg/m³",
+    safeLimit: 4,
+    status: "Bajo",
+    trend: "down",
+    source: "Combustión incompleta"
   },
 ];
 
-export default function RecentOrders() {
+// Function to get color based on status
+const getStatusColor = (status: Contaminant["status"]) => {
+  switch (status) {
+    case "Bajo":
+      return "success";
+    case "Moderado":
+      return "warning";
+    case "Alto":
+      return "error";
+    case "Muy Alto":
+      return "error";
+    case "Peligroso":
+      return "error";
+    default:
+      return "warning";
+  }
+};
+
+// Function to get trend icon
+const getTrendIcon = (trend: Contaminant["trend"]) => {
+  switch (trend) {
+    case "up":
+      return (
+        <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      );
+    case "down":
+      return (
+        <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      );
+    case "stable":
+      return (
+        <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
+
+export default function ContaminationIndex() {
   return (
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
       <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Recent Orders
+            Índice de Contaminantes - Cali
           </h3>
+          <p className="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
+            Calidad del aire y niveles de contaminación actuales
+          </p>
         </div>
 
         <div className="flex items-center gap-3">
@@ -115,13 +185,14 @@ export default function RecentOrders() {
                 strokeWidth="1.5"
               />
             </svg>
-            Filter
+            Filtrar
           </button>
           <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-            See all
+            Ver histórico
           </button>
         </div>
       </div>
+      
       <div className="max-w-full overflow-x-auto">
         <Table>
           {/* Table Header */}
@@ -131,77 +202,126 @@ export default function RecentOrders() {
                 isHeader
                 className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Products
+                Contaminante
               </TableCell>
               <TableCell
                 isHeader
                 className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Category
+                Nivel Actual
               </TableCell>
               <TableCell
                 isHeader
                 className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Price
+                Límite Seguro
               </TableCell>
               <TableCell
                 isHeader
                 className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Status
+                Tendencia
+              </TableCell>
+              <TableCell
+                isHeader
+                className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+              >
+                Estado
               </TableCell>
             </TableRow>
           </TableHeader>
 
           {/* Table Body */}
-
           <TableBody className="divide-y divide-gray-100 dark:divide-gray-800">
-            {tableData.map((product) => (
-              <TableRow key={product.id} className="">
+            {contaminationData.map((contaminant) => (
+              <TableRow key={contaminant.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
                 <TableCell className="py-3">
                   <div className="flex items-center gap-3">
-                    <div className="h-[50px] w-[50px] overflow-hidden rounded-md">
-                      <img
-                        src={product.image}
-                        className="h-[50px] w-[50px]"
-                        alt={product.name}
-                      />
+                    <div className="flex items-center justify-center h-10 w-10 rounded-md bg-gray-100 dark:bg-gray-800">
+                      <span className="font-semibold text-gray-700 dark:text-gray-300">
+                        {contaminant.name}
+                      </span>
                     </div>
                     <div>
                       <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                        {product.name}
+                        {contaminant.scientificName}
                       </p>
                       <span className="text-gray-500 text-theme-xs dark:text-gray-400">
-                        {product.variants}
+                        {contaminant.source}
                       </span>
                     </div>
                   </div>
                 </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {product.price}
+                
+                <TableCell className="py-3">
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold text-gray-800 text-theme-sm dark:text-white/90">
+                      {contaminant.currentLevel.toFixed(1)} {contaminant.unit}
+                    </span>
+                    {getTrendIcon(contaminant.trend)}
+                  </div>
                 </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {product.category}
+                
+                <TableCell className="py-3">
+                  <span className="text-gray-500 text-theme-sm dark:text-gray-400">
+                    {contaminant.safeLimit} {contaminant.unit}
+                  </span>
                 </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  <Badge
-                    size="sm"
-                    color={
-                      product.status === "Delivered"
-                        ? "success"
-                        : product.status === "Pending"
-                        ? "warning"
-                        : "error"
-                    }
-                  >
-                    {product.status}
-                  </Badge>
+                
+                <TableCell className="py-3">
+                  <div className="flex items-center">
+                    <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700">
+                      <div 
+                        className={`h-full rounded-full ${
+                          contaminant.currentLevel > contaminant.safeLimit * 1.5 
+                            ? "bg-red-500" 
+                            : contaminant.currentLevel > contaminant.safeLimit 
+                            ? "bg-yellow-500" 
+                            : "bg-green-500"
+                        }`}
+                        style={{ 
+                          width: `${Math.min(100, (contaminant.currentLevel / (contaminant.safeLimit * 1.5)) * 100)}%` 
+                        }}
+                      />
+                    </div>
+                  </div>
+                </TableCell>
+                
+                <TableCell className="py-3">
+                  <div className="flex items-center gap-2">
+                    <Badge
+                      size="sm"
+                      color={getStatusColor(contaminant.status)}
+                    >
+                      {contaminant.status}
+                    </Badge>
+                    <span className="text-gray-500 text-theme-xs dark:text-gray-400">
+                      {contaminant.currentLevel > contaminant.safeLimit ? "⚠️" : "✅"}
+                    </span>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+      </div>
+      
+      {/* Legend Section */}
+      <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-800">
+        <div className="flex flex-wrap items-center gap-4 text-theme-xs text-gray-500 dark:text-gray-400">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <span>Bajo: Dentro de límites seguros</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <span>Moderado: Ligeramente elevado</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+            <span>Alto/Muy Alto: Supera límites seguros</span>
+          </div>
+        </div>
       </div>
     </div>
   );
