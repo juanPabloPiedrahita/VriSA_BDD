@@ -3194,3 +3194,508 @@ WARNING 2025-12-11 04:09:15,744 basehttp "GET /static/admin/js/filters.js HTTP/1
 WARNING 2025-12-11 04:09:15,744 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
 WARNING 2025-12-11 04:09:15,787 log Not Found: /static/admin/img/search.svg
 WARNING 2025-12-11 04:09:15,788 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 404 179
+INFO 2025-12-11 13:14:18,503 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 13:14:26,634 basehttp "OPTIONS /api/stations/?page_size=100 HTTP/1.1" 200 0
+INFO 2025-12-11 13:14:26,634 basehttp "OPTIONS /api/stations/?page_size=100 HTTP/1.1" 200 0
+WARNING 2025-12-11 13:14:26,648 log Unauthorized: /api/stations/
+WARNING 2025-12-11 13:14:26,648 log Unauthorized: /api/stations/
+WARNING 2025-12-11 13:14:26,649 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 401 172
+WARNING 2025-12-11 13:14:26,649 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 401 172
+INFO 2025-12-11 13:14:26,709 basehttp "OPTIONS /api/auth/refresh/ HTTP/1.1" 200 0
+INFO 2025-12-11 13:14:26,709 basehttp "OPTIONS /api/auth/refresh/ HTTP/1.1" 200 0
+INFO 2025-12-11 13:14:26,788 basehttp "POST /api/auth/refresh/ HTTP/1.1" 200 753
+INFO 2025-12-11 13:14:26,789 basehttp "POST /api/auth/refresh/ HTTP/1.1" 200 753
+INFO 2025-12-11 13:14:26,920 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:14:26,920 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:14:26,925 basehttp "OPTIONS /api/alerts/?page_size=100 HTTP/1.1" 200 0
+INFO 2025-12-11 13:14:26,925 basehttp "OPTIONS /api/alerts/?page_size=100 HTTP/1.1" 200 0
+INFO 2025-12-11 13:14:26,999 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:14:26,999 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:16:00,956 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:16:00,964 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:16:01,051 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:16:01,051 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:17:28,575 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:17:28,583 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:17:28,605 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:17:28,610 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:28:33,214 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-12-11 13:28:33,293 basehttp "GET /admin/ HTTP/1.1" 200 10804
+WARNING 2025-12-11 13:28:33,364 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:28:33,365 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:28:33,366 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:28:33,366 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:28:33,367 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:28:33,367 log Not Found: /static/admin/css/dashboard.css
+WARNING 2025-12-11 13:28:33,367 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:28:33,368 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:28:33,370 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:28:33,368 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:28:33,368 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:28:33,368 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:28:33,370 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:28:33,370 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:28:33,419 log Not Found: /favicon.ico
+WARNING 2025-12-11 13:28:33,419 basehttp "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2025-12-11 13:43:36,599 basehttp "OPTIONS /api/auth/register/ HTTP/1.1" 200 0
+WARNING 2025-12-11 13:43:36,618 log Bad Request: /api/auth/register/
+WARNING 2025-12-11 13:43:36,619 basehttp "POST /api/auth/register/ HTTP/1.1" 400 36
+WARNING 2025-12-11 13:44:10,133 log Bad Request: /api/auth/register/
+WARNING 2025-12-11 13:44:10,133 basehttp "POST /api/auth/register/ HTTP/1.1" 400 36
+WARNING 2025-12-11 13:44:15,743 log Bad Request: /api/auth/register/
+WARNING 2025-12-11 13:44:15,744 basehttp "POST /api/auth/register/ HTTP/1.1" 400 10820
+WARNING 2025-12-11 13:44:15,769 log Not Found: /static/rest_framework/css/bootstrap.min.css
+WARNING 2025-12-11 13:44:15,770 basehttp "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,771 log Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+WARNING 2025-12-11 13:44:15,772 log Not Found: /static/rest_framework/css/prettify.css
+WARNING 2025-12-11 13:44:15,774 log Not Found: /static/rest_framework/css/default.css
+WARNING 2025-12-11 13:44:15,776 log Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+WARNING 2025-12-11 13:44:15,778 log Not Found: /static/rest_framework/js/ajax-form.js
+WARNING 2025-12-11 13:44:15,778 basehttp "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,779 log Not Found: /static/rest_framework/js/csrf.js
+WARNING 2025-12-11 13:44:15,780 basehttp "GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,780 basehttp "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,780 basehttp "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,780 basehttp "GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,781 basehttp "GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,782 log Not Found: /static/rest_framework/js/bootstrap.min.js
+WARNING 2025-12-11 13:44:15,783 log Not Found: /static/rest_framework/js/prettify-min.js
+WARNING 2025-12-11 13:44:15,784 log Not Found: /static/rest_framework/js/default.js
+WARNING 2025-12-11 13:44:15,785 log Not Found: /static/rest_framework/js/load-ajax-form.js
+WARNING 2025-12-11 13:44:15,785 basehttp "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,785 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,785 basehttp "GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,786 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,816 log Not Found: /static/rest_framework/js/ajax-form.js
+WARNING 2025-12-11 13:44:15,817 basehttp "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,861 log Not Found: /static/rest_framework/js/csrf.js
+WARNING 2025-12-11 13:44:15,862 basehttp "GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,909 log Not Found: /static/rest_framework/js/bootstrap.min.js
+WARNING 2025-12-11 13:44:15,910 basehttp "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,912 log Not Found: /static/rest_framework/js/prettify-min.js
+WARNING 2025-12-11 13:44:15,913 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,915 log Not Found: /static/rest_framework/js/default.js
+WARNING 2025-12-11 13:44:15,915 basehttp "GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,917 log Not Found: /static/rest_framework/js/load-ajax-form.js
+WARNING 2025-12-11 13:44:15,918 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:44:15,920 log Not Found: /favicon.ico
+WARNING 2025-12-11 13:44:15,920 basehttp "GET /favicon.ico HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,637 log Method Not Allowed: /api/auth/register/
+WARNING 2025-12-11 13:47:28,637 basehttp "GET /api/auth/register/? HTTP/1.1" 405 10826
+WARNING 2025-12-11 13:47:28,660 log Not Found: /static/rest_framework/css/bootstrap.min.css
+WARNING 2025-12-11 13:47:28,660 basehttp "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,664 log Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+WARNING 2025-12-11 13:47:28,666 log Not Found: /static/rest_framework/css/prettify.css
+WARNING 2025-12-11 13:47:28,667 log Not Found: /static/rest_framework/css/default.css
+WARNING 2025-12-11 13:47:28,669 log Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+WARNING 2025-12-11 13:47:28,669 basehttp "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,670 log Not Found: /static/rest_framework/js/ajax-form.js
+WARNING 2025-12-11 13:47:28,671 basehttp "GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,671 basehttp "GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,672 log Not Found: /static/rest_framework/js/csrf.js
+WARNING 2025-12-11 13:47:28,672 basehttp "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,673 log Not Found: /static/rest_framework/js/prettify-min.js
+WARNING 2025-12-11 13:47:28,674 log Not Found: /static/rest_framework/js/bootstrap.min.js
+WARNING 2025-12-11 13:47:28,675 basehttp "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,675 basehttp "GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,676 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,677 log Not Found: /static/rest_framework/js/default.js
+WARNING 2025-12-11 13:47:28,677 basehttp "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,678 log Not Found: /static/rest_framework/js/load-ajax-form.js
+WARNING 2025-12-11 13:47:28,679 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,679 basehttp "GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,723 log Not Found: /static/rest_framework/js/prettify-min.js
+WARNING 2025-12-11 13:47:28,723 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,772 log Not Found: /static/rest_framework/js/default.js
+WARNING 2025-12-11 13:47:28,773 basehttp "GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:28,775 log Not Found: /static/rest_framework/js/load-ajax-form.js
+WARNING 2025-12-11 13:47:28,776 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,845 log Unauthorized: /api/
+WARNING 2025-12-11 13:47:31,846 basehttp "GET /api/ HTTP/1.1" 401 9838
+WARNING 2025-12-11 13:47:31,864 log Not Found: /static/rest_framework/css/bootstrap.min.css
+WARNING 2025-12-11 13:47:31,865 log Not Found: /static/rest_framework/css/prettify.css
+WARNING 2025-12-11 13:47:31,866 log Not Found: /static/rest_framework/css/default.css
+WARNING 2025-12-11 13:47:31,867 log Not Found: /static/rest_framework/js/ajax-form.js
+WARNING 2025-12-11 13:47:31,867 log Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+WARNING 2025-12-11 13:47:31,869 log Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+WARNING 2025-12-11 13:47:31,870 basehttp "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,871 basehttp "GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,871 basehttp "GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,871 basehttp "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,871 basehttp "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,872 log Not Found: /static/rest_framework/js/csrf.js
+WARNING 2025-12-11 13:47:31,873 log Not Found: /static/rest_framework/js/bootstrap.min.js
+WARNING 2025-12-11 13:47:31,874 log Not Found: /static/rest_framework/js/prettify-min.js
+WARNING 2025-12-11 13:47:31,875 basehttp "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,876 log Not Found: /static/rest_framework/js/default.js
+WARNING 2025-12-11 13:47:31,877 basehttp "GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,877 basehttp "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,878 log Not Found: /static/rest_framework/js/load-ajax-form.js
+WARNING 2025-12-11 13:47:31,879 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,879 basehttp "GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,879 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,924 log Not Found: /static/rest_framework/js/bootstrap.min.js
+WARNING 2025-12-11 13:47:31,925 basehttp "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,974 log Not Found: /static/rest_framework/js/prettify-min.js
+WARNING 2025-12-11 13:47:31,974 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,977 log Not Found: /static/rest_framework/js/default.js
+WARNING 2025-12-11 13:47:31,977 basehttp "GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:31,979 log Not Found: /static/rest_framework/js/load-ajax-form.js
+WARNING 2025-12-11 13:47:31,980 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,264 log Unauthorized: /api/
+WARNING 2025-12-11 13:47:33,265 basehttp "GET /api/?format=api HTTP/1.1" 401 9871
+WARNING 2025-12-11 13:47:33,283 log Not Found: /static/rest_framework/css/bootstrap.min.css
+WARNING 2025-12-11 13:47:33,284 log Not Found: /static/rest_framework/css/prettify.css
+WARNING 2025-12-11 13:47:33,285 log Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+WARNING 2025-12-11 13:47:33,285 log Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+WARNING 2025-12-11 13:47:33,286 log Not Found: /static/rest_framework/css/default.css
+WARNING 2025-12-11 13:47:33,286 log Not Found: /static/rest_framework/js/ajax-form.js
+WARNING 2025-12-11 13:47:33,287 basehttp "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,287 basehttp "GET /static/rest_framework/css/prettify.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,287 basehttp "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,288 log Not Found: /static/rest_framework/js/csrf.js
+WARNING 2025-12-11 13:47:33,289 basehttp "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,289 basehttp "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,289 log Not Found: /static/rest_framework/js/prettify-min.js
+WARNING 2025-12-11 13:47:33,290 basehttp "GET /static/rest_framework/css/default.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,290 log Not Found: /static/rest_framework/js/bootstrap.min.js
+WARNING 2025-12-11 13:47:33,291 basehttp "GET /static/rest_framework/js/csrf.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,292 log Not Found: /static/rest_framework/js/default.js
+WARNING 2025-12-11 13:47:33,293 log Not Found: /static/rest_framework/js/load-ajax-form.js
+WARNING 2025-12-11 13:47:33,293 basehttp "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,293 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,294 basehttp "GET /static/rest_framework/js/default.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:33,294 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 404 179
+INFO 2025-12-11 13:47:41,296 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-12-11 13:47:41,316 basehttp "GET /admin/ HTTP/1.1" 200 10804
+WARNING 2025-12-11 13:47:41,333 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:47:41,334 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:47:41,335 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:47:41,337 log Not Found: /static/admin/css/dashboard.css
+WARNING 2025-12-11 13:47:41,337 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:47:41,336 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:47:41,338 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:41,339 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:41,339 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:41,339 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:41,340 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:41,340 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:41,341 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:47:41,341 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+INFO 2025-12-11 13:47:44,776 basehttp "GET /admin/api/user/ HTTP/1.1" 200 17930
+WARNING 2025-12-11 13:47:44,791 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:47:44,792 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,795 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:47:44,796 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:47:44,797 log Not Found: /static/admin/css/changelists.css
+WARNING 2025-12-11 13:47:44,798 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:47:44,798 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:47:44,800 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,800 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,801 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,802 log Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+WARNING 2025-12-11 13:47:44,803 log Not Found: /static/admin/js/jquery.init.js
+WARNING 2025-12-11 13:47:44,804 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,803 basehttp "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,804 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,803 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,805 log Not Found: /static/admin/js/core.js
+WARNING 2025-12-11 13:47:44,806 log Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+WARNING 2025-12-11 13:47:44,806 basehttp "GET /static/admin/js/core.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,807 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 179
+INFO 2025-12-11 13:47:44,811 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+WARNING 2025-12-11 13:47:44,813 log Not Found: /static/admin/js/actions.js
+WARNING 2025-12-11 13:47:44,813 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,846 log Not Found: /static/admin/js/urlify.js
+WARNING 2025-12-11 13:47:44,847 log Not Found: /static/admin/js/prepopulate.js
+WARNING 2025-12-11 13:47:44,847 log Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+WARNING 2025-12-11 13:47:44,848 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,848 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,849 log Not Found: /static/admin/js/filters.js
+WARNING 2025-12-11 13:47:44,850 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:47:44,850 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,851 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,851 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,856 log Not Found: /static/admin/js/jquery.init.js
+WARNING 2025-12-11 13:47:44,856 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,893 log Not Found: /static/admin/img/icon-yes.svg
+WARNING 2025-12-11 13:47:44,894 log Not Found: /static/admin/img/icon-no.svg
+WARNING 2025-12-11 13:47:44,895 log Not Found: /static/admin/img/search.svg
+WARNING 2025-12-11 13:47:44,895 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,896 basehttp "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,896 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,904 log Not Found: /static/admin/js/core.js
+WARNING 2025-12-11 13:47:44,905 basehttp "GET /static/admin/js/core.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,951 log Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+WARNING 2025-12-11 13:47:44,951 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:44,954 log Not Found: /static/admin/js/actions.js
+WARNING 2025-12-11 13:47:44,955 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:45,002 log Not Found: /static/admin/js/urlify.js
+WARNING 2025-12-11 13:47:45,002 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:45,005 log Not Found: /static/admin/js/prepopulate.js
+WARNING 2025-12-11 13:47:45,006 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:45,011 log Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+WARNING 2025-12-11 13:47:45,011 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:45,015 log Not Found: /static/admin/js/filters.js
+WARNING 2025-12-11 13:47:45,016 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:45,015 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:47:45,016 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:45,059 log Not Found: /static/admin/img/search.svg
+WARNING 2025-12-11 13:47:45,060 log Not Found: /static/admin/img/icon-yes.svg
+WARNING 2025-12-11 13:47:45,062 log Not Found: /static/admin/img/icon-no.svg
+WARNING 2025-12-11 13:47:45,062 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:45,062 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:45,063 basehttp "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 179
+INFO 2025-12-11 13:47:54,508 basehttp "GET /admin/token_blacklist/blacklistedtoken/ HTTP/1.1" 200 14021
+WARNING 2025-12-11 13:47:54,523 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:47:54,523 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,527 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:47:54,528 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:47:54,529 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:47:54,530 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:47:54,531 log Not Found: /static/admin/css/changelists.css
+WARNING 2025-12-11 13:47:54,533 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,533 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,533 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,534 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,535 log Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+WARNING 2025-12-11 13:47:54,537 basehttp "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,536 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,537 log Not Found: /static/admin/js/core.js
+WARNING 2025-12-11 13:47:54,536 log Not Found: /static/admin/js/jquery.init.js
+WARNING 2025-12-11 13:47:54,539 log Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+WARNING 2025-12-11 13:47:54,540 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,541 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,540 basehttp "GET /static/admin/js/core.js HTTP/1.1" 404 179
+INFO 2025-12-11 13:47:54,543 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+WARNING 2025-12-11 13:47:54,544 log Not Found: /static/admin/js/actions.js
+WARNING 2025-12-11 13:47:54,545 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,576 log Not Found: /static/admin/js/urlify.js
+WARNING 2025-12-11 13:47:54,577 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,583 log Not Found: /static/admin/js/prepopulate.js
+WARNING 2025-12-11 13:47:54,585 log Not Found: /static/admin/js/filters.js
+WARNING 2025-12-11 13:47:54,586 log Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+WARNING 2025-12-11 13:47:54,587 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:47:54,587 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,587 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,587 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,588 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,590 log Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+WARNING 2025-12-11 13:47:54,590 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,634 log Not Found: /static/admin/img/search.svg
+WARNING 2025-12-11 13:47:54,634 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,636 log Not Found: /static/admin/js/actions.js
+WARNING 2025-12-11 13:47:54,636 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,681 log Not Found: /static/admin/js/urlify.js
+WARNING 2025-12-11 13:47:54,681 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,684 log Not Found: /static/admin/js/prepopulate.js
+WARNING 2025-12-11 13:47:54,684 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,686 log Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+WARNING 2025-12-11 13:47:54,686 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,689 log Not Found: /static/admin/js/filters.js
+WARNING 2025-12-11 13:47:54,690 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:47:54,691 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,691 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:47:54,733 log Not Found: /static/admin/img/search.svg
+WARNING 2025-12-11 13:47:54,734 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 404 179
+INFO 2025-12-11 13:48:05,482 basehttp "GET /admin/token_blacklist/ HTTP/1.1" 200 5639
+WARNING 2025-12-11 13:48:05,501 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:48:05,502 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:48:05,503 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:48:05,504 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:48:05,504 log Not Found: /static/admin/css/dashboard.css
+WARNING 2025-12-11 13:48:05,505 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:48:05,506 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:05,506 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:05,506 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:05,506 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:05,507 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:05,509 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:48:05,509 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:05,509 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+INFO 2025-12-11 13:48:08,666 basehttp "GET /admin/ HTTP/1.1" 200 10804
+WARNING 2025-12-11 13:48:08,678 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:48:08,679 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:48:08,680 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:48:08,680 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:08,681 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:08,681 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:08,683 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:48:08,684 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:48:08,685 log Not Found: /static/admin/css/dashboard.css
+WARNING 2025-12-11 13:48:08,686 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:48:08,687 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:08,687 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:08,687 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:08,687 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+INFO 2025-12-11 13:48:12,912 basehttp "GET /admin/token_blacklist/outstandingtoken/ HTTP/1.1" 200 14589
+WARNING 2025-12-11 13:48:12,927 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:48:12,928 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:48:12,929 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:48:12,930 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:48:12,930 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:48:12,931 log Not Found: /static/admin/css/changelists.css
+WARNING 2025-12-11 13:48:12,932 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,932 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,933 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,933 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,934 log Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+WARNING 2025-12-11 13:48:12,935 log Not Found: /static/admin/js/jquery.init.js
+WARNING 2025-12-11 13:48:12,936 log Not Found: /static/admin/js/core.js
+WARNING 2025-12-11 13:48:12,936 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,937 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,937 basehttp "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,938 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,938 basehttp "GET /static/admin/js/core.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,939 log Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+WARNING 2025-12-11 13:48:12,940 log Not Found: /static/admin/js/actions.js
+WARNING 2025-12-11 13:48:12,941 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,941 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,977 log Not Found: /static/admin/js/urlify.js
+WARNING 2025-12-11 13:48:12,977 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,984 log Not Found: /static/admin/js/prepopulate.js
+WARNING 2025-12-11 13:48:12,985 log Not Found: /static/admin/js/filters.js
+WARNING 2025-12-11 13:48:12,986 log Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+WARNING 2025-12-11 13:48:12,987 log Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+WARNING 2025-12-11 13:48:12,987 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,988 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:48:12,988 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,989 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,989 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:12,989 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:13,036 log Not Found: /static/admin/img/search.svg
+WARNING 2025-12-11 13:48:13,037 log Not Found: /static/admin/js/actions.js
+WARNING 2025-12-11 13:48:13,037 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:13,037 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:13,087 log Not Found: /static/admin/js/urlify.js
+WARNING 2025-12-11 13:48:13,088 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:13,091 log Not Found: /static/admin/js/prepopulate.js
+WARNING 2025-12-11 13:48:13,091 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:13,093 log Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+WARNING 2025-12-11 13:48:13,094 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:13,096 log Not Found: /static/admin/js/filters.js
+WARNING 2025-12-11 13:48:13,136 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:48:13,136 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:13,136 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:13,179 log Not Found: /static/admin/img/search.svg
+WARNING 2025-12-11 13:48:13,180 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 404 179
+INFO 2025-12-11 13:48:23,289 basehttp "GET /admin/api/ HTTP/1.1" 200 8869
+WARNING 2025-12-11 13:48:23,306 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:48:23,307 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:48:23,308 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:48:23,309 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:48:23,311 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:23,311 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:23,309 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:48:23,311 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:23,310 log Not Found: /static/admin/css/dashboard.css
+WARNING 2025-12-11 13:48:23,312 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:23,313 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:48:23,314 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:23,314 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:23,315 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+INFO 2025-12-11 13:48:24,980 basehttp "GET /admin/api/ HTTP/1.1" 200 8869
+WARNING 2025-12-11 13:48:24,996 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:48:24,997 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:48:24,997 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:48:24,998 log Not Found: /static/admin/css/dashboard.css
+WARNING 2025-12-11 13:48:24,999 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:48:24,999 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:48:25,000 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:25,000 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:25,000 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:25,001 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:25,001 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:25,002 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:48:25,002 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:48:25,003 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+INFO 2025-12-11 13:51:15,075 basehttp "POST /api/auth/register/ HTTP/1.1" 201 702
+INFO 2025-12-11 13:51:15,156 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:51:15,159 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:51:15,191 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:51:15,193 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:51:38,004 basehttp "GET /admin/api/ HTTP/1.1" 200 8869
+WARNING 2025-12-11 13:51:38,022 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:51:38,023 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:51:38,023 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:38,025 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:51:38,025 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:38,026 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:51:38,028 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:51:38,028 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:38,029 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:51:38,030 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:38,031 log Not Found: /static/admin/css/dashboard.css
+WARNING 2025-12-11 13:51:38,031 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:38,032 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:38,032 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:38,078 log Not Found: /favicon.ico
+WARNING 2025-12-11 13:51:38,078 basehttp "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2025-12-11 13:51:40,857 basehttp "GET /admin/api/user/ HTTP/1.1" 200 18479
+WARNING 2025-12-11 13:51:40,877 log Not Found: /static/admin/css/base.css
+WARNING 2025-12-11 13:51:40,878 log Not Found: /static/admin/js/theme.js
+WARNING 2025-12-11 13:51:40,881 log Not Found: /static/admin/css/nav_sidebar.css
+WARNING 2025-12-11 13:51:40,881 log Not Found: /static/admin/css/dark_mode.css
+WARNING 2025-12-11 13:51:40,883 log Not Found: /static/admin/css/changelists.css
+WARNING 2025-12-11 13:51:40,884 log Not Found: /static/admin/js/nav_sidebar.js
+WARNING 2025-12-11 13:51:40,884 basehttp "GET /static/admin/css/base.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,885 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,886 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,889 log Not Found: /static/admin/js/jquery.init.js
+WARNING 2025-12-11 13:51:40,888 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,888 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,889 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,890 log Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+WARNING 2025-12-11 13:51:40,886 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,892 log Not Found: /static/admin/js/core.js
+WARNING 2025-12-11 13:51:40,893 log Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+WARNING 2025-12-11 13:51:40,894 basehttp "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,894 basehttp "GET /static/admin/js/core.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,894 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 179
+INFO 2025-12-11 13:51:40,897 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+WARNING 2025-12-11 13:51:40,898 log Not Found: /static/admin/js/actions.js
+WARNING 2025-12-11 13:51:40,899 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,930 log Not Found: /static/admin/js/urlify.js
+WARNING 2025-12-11 13:51:40,930 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,936 log Not Found: /static/admin/js/prepopulate.js
+WARNING 2025-12-11 13:51:40,937 log Not Found: /static/admin/js/filters.js
+WARNING 2025-12-11 13:51:40,940 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,939 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:51:40,938 log Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+WARNING 2025-12-11 13:51:40,940 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,940 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,941 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,944 log Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+WARNING 2025-12-11 13:51:40,944 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,986 log Not Found: /static/admin/img/search.svg
+WARNING 2025-12-11 13:51:40,987 log Not Found: /static/admin/img/icon-yes.svg
+WARNING 2025-12-11 13:51:40,988 log Not Found: /static/admin/img/icon-no.svg
+WARNING 2025-12-11 13:51:40,989 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,989 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,989 basehttp "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:40,992 log Not Found: /static/admin/js/actions.js
+WARNING 2025-12-11 13:51:40,993 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:41,041 log Not Found: /static/admin/js/urlify.js
+WARNING 2025-12-11 13:51:41,042 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:41,090 log Not Found: /static/admin/js/prepopulate.js
+WARNING 2025-12-11 13:51:41,091 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:41,134 log Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+WARNING 2025-12-11 13:51:41,134 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:41,181 log Not Found: /static/admin/js/filters.js
+WARNING 2025-12-11 13:51:41,182 log Not Found: /static/admin/css/responsive.css
+WARNING 2025-12-11 13:51:41,183 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:41,184 log Not Found: /static/admin/img/icon-yes.svg
+WARNING 2025-12-11 13:51:41,184 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:41,185 log Not Found: /static/admin/img/icon-no.svg
+WARNING 2025-12-11 13:51:41,186 log Not Found: /static/admin/img/search.svg
+WARNING 2025-12-11 13:51:41,186 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:41,187 basehttp "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 179
+WARNING 2025-12-11 13:51:41,187 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 404 179
+INFO 2025-12-11 13:52:39,659 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:52:39,659 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:52:39,685 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:52:39,687 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:54:25,445 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:54:25,448 basehttp "GET /api/stations/?page_size=100 HTTP/1.1" 200 1562
+INFO 2025-12-11 13:54:25,476 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
+INFO 2025-12-11 13:54:25,477 basehttp "GET /api/alerts/?page_size=100 HTTP/1.1" 200 693
