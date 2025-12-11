@@ -1,4 +1,84 @@
-/mobile/node_modules/@react-native/debugger-frontend/dist/third-party/front_end/models/crux-manager/crux-manager.js
+# ==========================================
+# GLOBAL IGNORE FOR VRISA PROJECT
+# ==========================================
 
+### --- NODE --- ###
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
 
-infra/vrisa_test_script.sh #Este archivo es una serie de comandos para probar el backend de VRISA
+# Vite build
+dist/
+.next/
+out/
+
+# React Native / Expo
+.expo/
+.expo-shared/
+android/
+ios/
+web-build/
+
+### --- PYTHON / DJANGO --- ###
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.sqlite
+db.sqlite3
+media/
+staticfiles/
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+### --- BACKEND BUILD --- ###
+backend/static/
+backend/media/
+backend/.mypy_cache/
+backend/.pytest_cache/
+backend/.ruff_cache/
+
+### --- DOCKER --- ###
+*.pid
+*.seed
+*.tar
+docker-data/
+postgres_data/
+postgres/
+redis-data/
+
+### --- IDEs / OS FILES --- ###
+# VSCode
+.vscode/
+
+# IntelliJ / JetBrains
+.idea/
+*.iml
+
+# Windows & Mac junk
+Thumbs.db
+.DS_Store
+
+### --- LOGS --- ###
+*.log
+logs/
+backend/logs/
+frontend/logs/
+mobile/logs/
+
+### --- TYPESCRIPT --- ###
+*.tsbuildinfo
+
+### --- LOCAL CONFIG --- ###
+infra/vrisa_test_script.sh
+
+### --- OTHERS --- ###
+coverage/

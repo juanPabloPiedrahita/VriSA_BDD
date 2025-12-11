@@ -2419,3 +2419,6 @@ WARNING 2025-12-10 05:02:32,998 log Not Found: /static/admin/img/search.svg
 WARNING 2025-12-10 05:02:32,999 log Not Found: /static/admin/img/icon-yes.svg
 WARNING 2025-12-10 05:02:32,999 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 404 179
 WARNING 2025-12-10 05:02:33,000 basehttp "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 179
+INFO 2025-12-10 23:59:41,372 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 00:24:35,371 autoreload Watching for file changes with StatReloader
+INFO 2025-12-11 00:37:01,582 autoreload Watching for file changes with StatReloader

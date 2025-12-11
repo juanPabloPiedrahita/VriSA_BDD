@@ -1,64 +1,67 @@
-#Este es el archivo docker-compose.yml que define los servicios de la aplicacion VRISA: base de datos PostGIS, cache Redis, backend Django y frontend React. Infra es de infrastructura, XD.
+# docker-compose.yml
+#
+# Docker Compose configuration for the VRISA project.
+# Defines services for PostgreSQL/PostGIS, Redis, backend (Django), and frontend (React/Vite).
 
 version: "3.9"
 
 services:
   db:
-    image: postgis/postgis:15-3.4
+    image: postgis/postgis:15-3.4  # PostgreSQL with PostGIS extension
     container_name: vrisa_db
     environment:
-      POSTGRES_DB: vrisa
-      POSTGRES_USER: vrisa_user
-      POSTGRES_PASSWORD: vrisa_pass
+      POSTGRES_DB: vrisa           # Database name
+      POSTGRES_USER: vrisa_user    # Database user
+      POSTGRES_PASSWORD: vrisa_pass # Database password
     ports:
-      - "5432:5432"
+      - "5432:5432"                # Expose PostgreSQL port
     volumes:
-      - postgres_data:/var/lib/postgresql/data #Ocho, aqui se guarda la data de la base de datos
-    
-    healthcheck: #Esto es un healthcheck para asegurarse de que la base de datos este lista antes de que el backend intente conectarse
-      test: ["CMD-SHELL", "pg_isready -U vrisa_user -d vrisa"]
+      - postgres_data:/var/lib/postgresql/data # Persist database data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vrisa_user -d vrisa"] # Check if PostgreSQL is ready
       interval: 5s
       timeout: 5s
       retries: 5
 
   redis:
-    image: redis:7 #Redis es un sistema de almacenamiento en cache en memoria, yauda a mejorar el rendimiento de la aplicacion
+    image: redis:7                  # Redis service
     container_name: vrisa_redis
     ports:
-      - "6379:6379"
+      - "6379:6379"                # Expose Redis port
 
-  backend: #El servicio del backend, que corre Django
-    build: ../backend
+  backend:
+    build: ../backend               # Build backend Dockerfile
     container_name: vrisa_backend
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ../backend:/app
-      - /app/__pycache__
+      - ../backend:/app             # Mount backend source code
     ports:
-      - "8000:8000"
+      - "8000:8000"                 # Expose Django development server
     depends_on:
       db:
-        condition: service_healthy
+        condition: service_healthy # Wait for DB to be healthy
       redis:
-        condition: service_started
+        condition: service_started # Wait for Redis to start
     restart: on-failure
-    environment: #Aqui se definen las variables de entorno para la conexion a la base de datos
+    environment:
       - DB_HOST=db
       - DB_NAME=vrisa
       - DB_USER=vrisa_user
       - DB_PASSWORD=vrisa_pass
       - DB_PORT=5432
 
-  frontend: #El servicio del frontend, que corre React
-    build: ../frontend
+  frontend:
+    build: ../frontend              # Build frontend Dockerfile
     container_name: vrisa_frontend
+    command: ["npm", "run", "dev", "--", "--host"] # Run Vite dev server
     ports:
-      - "3000:3000" #El frontend corre en el puerto 3000
+      - "5173:5173"                 # Expose Vite development server
     volumes:
-      - ../frontend:/app
-      - /app/node_modules
+      - ../frontend:/app            # Mount frontend source code
+      - /app/node_modules           # Prevent overwriting node_modules
     depends_on:
-      - backend
+      - backend                     # Wait for the backend to start
 
+# Named volume to persist PostgreSQL data
 volumes:
-  postgres_data: #Volumen para persistir los datos de la base de datos Postgres
+  postgres_data:
