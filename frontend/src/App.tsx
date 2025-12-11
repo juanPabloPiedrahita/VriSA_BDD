@@ -18,27 +18,21 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
-import ProtectedRoute from './components/auth/ProtectedRoute';
 
 export default function App() {
   return (
     <>
       <Router>
         <ScrollToTop />
+
         <Routes>
-          {/* Auth Routes (Public - No Protection) */}
+
+          {/* Auth Routes */}
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
 
-          {/* Protected Dashboard Layout */}
-          <Route
-            element={
-              <ProtectedRoute>
-                <AppLayout />
-              </ProtectedRoute>
-            }
-          >
-            {/* Dashboard Home */}
+          {/* Dashboard Layout (SIN PROTECCIÓN) */}
+          <Route element={<AppLayout />}>
             <Route index path="/" element={<Home />} />
 
             {/* Profile & Settings */}
@@ -67,6 +61,7 @@ export default function App() {
 
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </Router>
     </>

@@ -63,6 +63,5 @@ services:
     depends_on:
       - backend
 
-
 volumes:
   postgres_data: #Volumen para persistir los datos de la base de datos Postgres

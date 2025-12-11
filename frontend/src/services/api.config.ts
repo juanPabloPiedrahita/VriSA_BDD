@@ -46,7 +46,7 @@ api.interceptors.response.use(
         return api(originalRequest);
       } catch (refreshError) {
         localStorage.clear();
-        window.location.href = '/signin';
+        window.location.href = '/auth/signin';
         return Promise.reject(refreshError);
       }
     }

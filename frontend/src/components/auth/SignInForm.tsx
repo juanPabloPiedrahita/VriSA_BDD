@@ -1,187 +1,150 @@
-import { useState, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { authService } from '../../services/auth.service';
+import { useState } from "react";
+import { Link } from "react-router";
+import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../icons";
+import Label from "../form/Label";
+import Input from "../form/input/InputField";
+import Checkbox from "../form/input/Checkbox";
+import Button from "../ui/button/Button";
 
 export default function SignInForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-
-    try {
-      // Llamar al backend
-      await authService.login(email, password);
-      
-      // Si el login es exitoso, redirigir al dashboard
-      navigate('/');
-    } catch (err: any) {
-      console.error('Login error:', err);
-      
-      // Mostrar error al usuario
-      const errorMessage = err.response?.data?.detail 
-        || err.response?.data?.non_field_errors?.[0]
-        || 'Error al iniciar sesión. Verifica tus credenciales.';
-      
-      setError(errorMessage);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   return (
-    <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-      <div className="flex flex-wrap items-center">
-        <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
-          <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-            <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-              Iniciar Sesión en VRISA
-            </h2>
-
-            {/* Error Alert */}
-            {error && (
-              <div className="mb-4 rounded-lg bg-red-50 p-4 text-sm text-red-800 dark:bg-red-900 dark:text-red-200">
+    <div className="flex flex-col flex-1">
+      <div className="w-full max-w-md pt-10 mx-auto">
+        <Link
+          to="/"
+          className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+        >
+          <ChevronLeftIcon className="size-5" />
+          Back to dashboard
+        </Link>
+      </div>
+      <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
+        <div>
+          <div className="mb-5 sm:mb-8">
+            <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
+              Sign In
+            </h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Enter your email and password to sign in!
+            </p>
+          </div>
+          <div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
+              <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                 <svg
-                  className="mr-2 inline h-5 w-5"
-                  fill="currentColor"
+                  width="20"
+                  height="20"
                   viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                    clipRule="evenodd"
+                    d="M18.7511 10.1944C18.7511 9.47495 18.6915 8.94995 18.5626 8.40552H10.1797V11.6527H15.1003C15.0011 12.4597 14.4654 13.675 13.2749 14.4916L13.2582 14.6003L15.9087 16.6126L16.0924 16.6305C17.7788 15.1041 18.7511 12.8583 18.7511 10.1944Z"
+                    fill="#4285F4"
+                  />
+                  <path
+                    d="M10.1788 18.75C12.5895 18.75 14.6133 17.9722 16.0915 16.6305L13.274 14.4916C12.5201 15.0068 11.5081 15.3666 10.1788 15.3666C7.81773 15.3666 5.81379 13.8402 5.09944 11.7305L4.99473 11.7392L2.23868 13.8295L2.20264 13.9277C3.67087 16.786 6.68674 18.75 10.1788 18.75Z"
+                    fill="#34A853"
+                  />
+                  <path
+                    d="M5.10014 11.7305C4.91165 11.186 4.80257 10.6027 4.80257 9.99992C4.80257 9.3971 4.91165 8.81379 5.09022 8.26935L5.08523 8.1534L2.29464 6.02954L2.20333 6.0721C1.5982 7.25823 1.25098 8.5902 1.25098 9.99992C1.25098 11.4096 1.5982 12.7415 2.20333 13.9277L5.10014 11.7305Z"
+                    fill="#FBBC05"
+                  />
+                  <path
+                    d="M10.1789 4.63331C11.8554 4.63331 12.9864 5.34303 13.6312 5.93612L16.1511 3.525C14.6035 2.11528 12.5895 1.25 10.1789 1.25C6.68676 1.25 3.67088 3.21387 2.20264 6.07218L5.08953 8.26943C5.81381 6.15972 7.81776 4.63331 10.1789 4.63331Z"
+                    fill="#EB4335"
                   />
                 </svg>
-                {error}
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="mb-2.5 block font-medium text-black dark:text-white">
-                  Email
-                </label>
-                <div className="relative">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Ingresa tu email"
-                    className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                    required
-                    disabled={loading}
-                  />
-                  <span className="absolute right-4 top-4">
-                    <svg
-                      className="fill-current"
-                      width="22"
-                      height="22"
-                      viewBox="0 0 22 22"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g opacity="0.5">
-                        <path
-                          d="M19.2516 3.30005H2.75156C1.58281 3.30005 0.585938 4.26255 0.585938 5.46567V16.6032C0.585938 17.7719 1.54844 18.7688 2.75156 18.7688H19.2516C20.4203 18.7688 21.4172 17.8063 21.4172 16.6032V5.4313C21.4172 4.26255 20.4203 3.30005 19.2516 3.30005ZM19.2516 4.84692C19.2859 4.84692 19.3203 4.84692 19.3547 4.84692L11.0016 10.2094L2.64844 4.84692C2.68281 4.84692 2.71719 4.84692 2.75156 4.84692H19.2516ZM19.2516 17.1532H2.75156C2.40781 17.1532 2.13281 16.8782 2.13281 16.5344V6.35942L10.1766 11.5157C10.4172 11.6875 10.6922 11.7563 10.9672 11.7563C11.2422 11.7563 11.5172 11.6875 11.7578 11.5157L19.8016 6.35942V16.5688C19.8703 16.9125 19.5953 17.1532 19.2516 17.1532Z"
-                          fill=""
-                        />
-                      </g>
-                    </svg>
-                  </span>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label className="mb-2.5 block font-medium text-black dark:text-white">
-                  Contraseña
-                </label>
-                <div className="relative">
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Ingresa tu contraseña"
-                    className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                    required
-                    disabled={loading}
-                  />
-                  <span className="absolute right-4 top-4">
-                    <svg
-                      className="fill-current"
-                      width="22"
-                      height="22"
-                      viewBox="0 0 22 22"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g opacity="0.5">
-                        <path
-                          d="M16.1547 6.80626V5.91251C16.1547 3.16251 14.0922 0.825009 11.4797 0.618759C10.0359 0.481259 8.59219 0.996884 7.52656 1.95938C6.46094 2.92188 5.84219 4.29688 5.84219 5.70626V6.80626C3.84844 7.18438 2.33594 8.93751 2.33594 11.0688V17.2906C2.33594 19.5594 4.19219 21.3813 6.42656 21.3813H15.5016C17.7703 21.3813 19.6266 19.525 19.6266 17.2563V11C19.6609 8.93751 18.1484 7.21876 16.1547 6.80626ZM8.55781 3.09376C9.31406 2.40626 10.3109 2.06251 11.3422 2.16563C13.1641 2.33751 14.6078 3.98751 14.6078 5.91251V6.70313H7.38906V5.67188C7.38906 4.70938 7.80156 3.78126 8.55781 3.09376ZM18.1141 17.2906C18.1141 18.7 16.9453 19.8688 15.5359 19.8688H6.46094C5.05156 19.8688 3.91719 18.7344 3.91719 17.325V11.0688C3.91719 9.52189 5.15469 8.28438 6.70156 8.28438H15.2953C16.8422 8.28438 18.1141 9.52188 18.1141 11V17.2906Z"
-                          fill=""
-                        />
-                        <path
-                          d="M10.9977 11.8594C10.5852 11.8594 10.207 12.2031 10.207 12.65V16.2594C10.207 16.6719 10.5508 17.05 10.9977 17.05C11.4102 17.05 11.7883 16.7063 11.7883 16.2594V12.6156C11.7883 12.2031 11.4102 11.8594 10.9977 11.8594Z"
-                          fill=""
-                        />
-                      </g>
-                    </svg>
-                  </span>
-                </div>
-              </div>
-
-              <div className="mb-5">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+                Sign in with Google
+              </button>
+              <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
+                <svg
+                  width="21"
+                  className="fill-current"
+                  height="20"
+                  viewBox="0 0 21 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
-                </button>
+                  <path d="M15.6705 1.875H18.4272L12.4047 8.75833L19.4897 18.125H13.9422L9.59717 12.4442L4.62554 18.125H1.86721L8.30887 10.7625L1.51221 1.875H7.20054L11.128 7.0675L15.6705 1.875ZM14.703 16.475H16.2305L6.37054 3.43833H4.73137L14.703 16.475Z" />
+                </svg>
+                Sign in with X
+              </button>
+            </div>
+            <div className="relative py-3 sm:py-5">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-200 dark:border-gray-800"></div>
               </div>
-
-              {/* Demo Credentials */}
-              <div className="mt-6 text-center">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Credenciales de prueba:
-                </p>
-                <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                  Email: <span className="font-semibold">admin@vrisa.com</span>
-                  <br />
-                  Password: <span className="font-semibold">admin123</span>
-                </p>
+              <div className="relative flex justify-center text-sm">
+                <span className="p-2 text-gray-400 bg-white dark:bg-gray-900 sm:px-5 sm:py-2">
+                  Or
+                </span>
               </div>
-
-              <div className="mt-6 text-center">
-                <p>
-                  ¿No tienes cuenta?{' '}
-                  <a href="/signup" className="text-primary">
-                    Regístrate
-                  </a>
-                </p>
+            </div>
+            <form>
+              <div className="space-y-6">
+                <div>
+                  <Label>
+                    Email <span className="text-error-500">*</span>{" "}
+                  </Label>
+                  <Input placeholder="info@gmail.com" />
+                </div>
+                <div>
+                  <Label>
+                    Password <span className="text-error-500">*</span>{" "}
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Enter your password"
+                    />
+                    <span
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute z-30 -translate-y-1/2 cursor-pointer right-4 top-1/2"
+                    >
+                      {showPassword ? (
+                        <EyeIcon className="fill-gray-500 dark:fill-gray-400 size-5" />
+                      ) : (
+                        <EyeCloseIcon className="fill-gray-500 dark:fill-gray-400 size-5" />
+                      )}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Checkbox checked={isChecked} onChange={setIsChecked} />
+                    <span className="block font-normal text-gray-700 text-theme-sm dark:text-gray-400">
+                      Keep me logged in
+                    </span>
+                  </div>
+                  <Link
+                    to="/reset-password"
+                    className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                  >
+                    Forgot password?
+                  </Link>
+                </div>
+                <div>
+                  <Button className="w-full" size="sm">
+                    Sign in
+                  </Button>
+                </div>
               </div>
             </form>
-          </div>
-        </div>
 
-        <div className="hidden w-full xl:block xl:w-1/2">
-          <div className="py-17.5 px-26 text-center">
-            <a className="mb-5.5 inline-block" href="/">
-              <img className="hidden dark:block" src="/images/logo/logo.svg" alt="Logo" />
-              <img className="dark:hidden" src="/images/logo/logo-dark.svg" alt="Logo" />
-            </a>
-
-            <p className="2xl:px-20 mb-4">
-              Sistema de Monitoreo de Calidad del Aire - VRISA
-            </p>
-
-            <span className="mt-15 inline-block">
-              <img src="/images/illustration/illustration-03.svg" alt="illustration" />
-            </span>
+            <div className="mt-5">
+              <p className="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
+                Don&apos;t have an account? {""}
+                <Link
+                  to="/signup"
+                  className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                >
+                  Sign Up
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
