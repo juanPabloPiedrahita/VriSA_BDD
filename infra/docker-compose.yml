@@ -1,5 +1,3 @@
-#Este es el archivo docker-compose.yml que define los servicios de la aplicacion VRISA: base de datos PostGIS, cache Redis, backend Django y frontend React. Infra es de infrastructura, XD.
-
 version: "3.9"
 
 services:
@@ -13,27 +11,25 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data #Ocho, aqui se guarda la data de la base de datos
-    
-    healthcheck: #Esto es un healthcheck para asegurarse de que la base de datos este lista antes de que el backend intente conectarse
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
       test: ["CMD-SHELL", "pg_isready -U vrisa_user -d vrisa"]
       interval: 5s
       timeout: 5s
       retries: 5
 
   redis:
-    image: redis:7 #Redis es un sistema de almacenamiento en cache en memoria, yauda a mejorar el rendimiento de la aplicacion
+    image: redis:7
     container_name: vrisa_redis
     ports:
       - "6379:6379"
 
-  backend: #El servicio del backend, que corre Django
+  backend:
     build: ../backend
     container_name: vrisa_backend
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ../backend:/app
-      - /app/__pycache__
     ports:
       - "8000:8000"
     depends_on:
@@ -42,23 +38,26 @@ services:
       redis:
         condition: service_started
     restart: on-failure
-    environment: #Aqui se definen las variables de entorno para la conexion a la base de datos
+    environment:
       - DB_HOST=db
       - DB_NAME=vrisa
       - DB_USER=vrisa_user
       - DB_PASSWORD=vrisa_pass
       - DB_PORT=5432
 
-  frontend: #El servicio del frontend, que corre React
+  frontend:
     build: ../frontend
     container_name: vrisa_frontend
+    command: ["npm", "run", "dev", "--", "--host"]
     ports:
-      - "3000:3000" #El frontend corre en el puerto 3000
+      - "5173:5173"
     volumes:
-      - ../frontend:/app
-      - /app/node_modules
+      - ../frontend:/app      # monta tu código
+      - /app/node_modules     # PERO evita que node_modules sea sobrescrito
     depends_on:
       - backend
 
+
+
 volumes:
-  postgres_data: #Volumen para persistir los datos de la base de datos Postgres
+  postgres_data:
