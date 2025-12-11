@@ -9,7 +9,8 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   const isAuthenticated = authService.isAuthenticated();
 
   if (!isAuthenticated) {
-    return <Navigate to="/auth/signin" replace />;
+    // Cambiar de '/auth/signin' a '/signin'
+    return <Navigate to="/signin" replace />;
   }
 
   return <>{children}</>;
