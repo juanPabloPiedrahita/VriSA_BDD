@@ -122,12 +122,14 @@ SIMPLE_JWT = {
 
 # CORS Configuration (para desarrollo)
 CORS_ALLOW_ALL_ORIGINS = True  # Solo para desarrollo
-# Para producción, usar:
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000", #Este es el puerto por defecto de la app React
-#     "http://127.0.0.1:3000", #Este es el puerto por defecto de la app React
-#     "https://tu-dominio.com",
-# ]
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://172.18.0.6:3000", #Direccion IP del contenedor frontend en la red de Docker
+    "http://localhost:3000", #Este es el puerto por defecto de la app React
+    "http://127.0.0.1:3000", #Este es el puerto por defecto de la app React
+    "https://tu-dominio.com",
+]
 
 CORS_ALLOW_CREDENTIALS = True
 

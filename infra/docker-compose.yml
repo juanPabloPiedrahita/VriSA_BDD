@@ -49,14 +49,17 @@ services:
       - DB_PASSWORD=vrisa_pass
       - DB_PORT=5432
 
-  frontend: #El servicio del frontend, que corre React
+  frontend:
     build: ../frontend
     container_name: vrisa_frontend
     ports:
-      - "3000:3000" #El frontend corre en el puerto 3000
+      - "3000:3000"
     volumes:
       - ../frontend:/app
       - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_API_URL=http://backend:8000
     depends_on:
       - backend
 

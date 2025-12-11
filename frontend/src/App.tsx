@@ -24,12 +24,18 @@ export default function App() {
     <>
       <Router>
         <ScrollToTop />
+
         <Routes>
-          {/* Dashboard Layout */}
+
+          {/* Auth Routes */}
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+
+          {/* Dashboard Layout (SIN PROTECCIÓN) */}
           <Route element={<AppLayout />}>
             <Route index path="/" element={<Home />} />
 
-            {/* Others Page */}
+            {/* Profile & Settings */}
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />
@@ -40,7 +46,7 @@ export default function App() {
             {/* Tables */}
             <Route path="/basic-tables" element={<BasicTables />} />
 
-            {/* Ui Elements */}
+            {/* UI Elements */}
             <Route path="/alerts" element={<Alerts />} />
             <Route path="/avatars" element={<Avatars />} />
             <Route path="/badge" element={<Badges />} />
@@ -53,12 +59,9 @@ export default function App() {
             <Route path="/bar-chart" element={<BarChart />} />
           </Route>
 
-          {/* Auth Layout */}
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </Router>
     </>
