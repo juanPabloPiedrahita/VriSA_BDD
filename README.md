@@ -511,9 +511,10 @@ docker compose up
 
 **Proyecto final - Curso de Bases de Datos**
 
-* **Desarrollador Backend** : jppt
-* **Institución** : Univalle
-* **Fecha** : Diciembre 2024
+* **Desarrolladores Backend** : Juan Pablo Piedrahita Triana, Emmanuel Páez Hurtado y David Taborda Montenegro.
+* **Desarrolladores Frontend** : Óscar Andrés Rengifo Bustos, Juan David López Jiménez y Hugo Alexander Eraso Rosero.
+* **Institución** : Universidad del Valle.
+* **Fecha** : Diciembre 2025.
 
 ---
 
@@ -525,7 +526,11 @@ Este proyecto es parte de un trabajo académico.
 
 ## 🙏 Agradecimientos
 
-* Profesor Japeto
+* Profesor Jefferson Amado Peña Torres.
+
+---
+
+Todo el trabajo se encuentra en este repositorio, junto con su informe en PDF, y en el siguiente enlace de YouTube: https://youtu.be/KrSPzm1ClQ4?si=SHNDgie9dIWkPirB
 
 ---
 
