@@ -5,6 +5,14 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
+    """
+    This migration updates several models by adjusting primary key fields,
+    adding missing BigAutoField IDs, redefining relationships, and creating
+    the StationConsult and AlertReceive models. These changes ensure
+    consistency across the project, enforce unique constraints, and define
+    relationships between users, alerts, stations, and institutions.
+    """
+
     dependencies = [
         ("api", "0001_initial"),
     ]
@@ -26,6 +34,13 @@ class Migration(migrations.Migration):
                 to="api.user",
             ),
         ),
+
+        """
+        Updating Alert model:
+        - Enforces BigAutoField for ID.
+        - Ensures station relation uses proper foreign key behavior.
+        """
+        ,
         migrations.AlterField(
             model_name="alert",
             name="id",
@@ -42,6 +57,14 @@ class Migration(migrations.Migration):
                 to="api.station",
             ),
         ),
+
+        """
+        Updating AlertPollutant model:
+        - Adds BigAutoField ID.
+        - Ensures pollutant choices remain controlled.
+        - Links each pollutant entry to an Alert.
+        """
+        ,
         migrations.AlterField(
             model_name="alertpollutant",
             name="alert",
@@ -73,6 +96,13 @@ class Migration(migrations.Migration):
                 max_length=10,
             ),
         ),
+
+        """
+        Updating AuthUser model:
+        - Ensures the primary key uses BigAutoField.
+        - Links to the main User model via a OneToOne relation.
+        """
+        ,
         migrations.AlterField(
             model_name="authuser",
             name="id",
@@ -89,6 +119,13 @@ class Migration(migrations.Migration):
                 to="api.user",
             ),
         ),
+
+        """
+        Updating Device model:
+        - Standardizes BigAutoField ID.
+        - Ensures each device belongs to a Station.
+        """
+        ,
         migrations.AlterField(
             model_name="device",
             name="id",
@@ -113,6 +150,13 @@ class Migration(migrations.Migration):
                 max_length=20,
             ),
         ),
+
+        """
+        Updating Institution model:
+        - Makes admin a required FK with RESTRICT deletion.
+        - Upgrades ID field.
+        """
+        ,
         migrations.AlterField(
             model_name="institution",
             name="admin",
@@ -129,6 +173,14 @@ class Migration(migrations.Migration):
                 auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
             ),
         ),
+
+        """
+        Updating Station model:
+        - Admin can be null (SET_NULL).
+        - Institution relation enforced.
+        - Uses BigAutoField ID.
+        """
+        ,
         migrations.AlterField(
             model_name="station",
             name="admin",
@@ -156,6 +208,13 @@ class Migration(migrations.Migration):
                 to="api.institution",
             ),
         ),
+
+        """
+        Updating User model:
+        - Enforces indexed, unique email field.
+        - Upgrades to BigAutoField.
+        """
+        ,
         migrations.AlterField(
             model_name="user",
             name="email",
@@ -168,6 +227,13 @@ class Migration(migrations.Migration):
                 auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
             ),
         ),
+
+        """
+        Creating StationConsult:
+        - Tracks when an AuthUser consults a Station.
+        - Unique per user+station pair.
+        """
+        ,
         migrations.CreateModel(
             name="StationConsult",
             fields=[
@@ -208,6 +274,13 @@ class Migration(migrations.Migration):
                 "unique_together": {("auth_user", "station")},
             },
         ),
+
+        """
+        Creating AlertReceive:
+        - Logs when an AuthUser receives an Alert.
+        - Ensures each user receives each alert only once.
+        """
+        ,
         migrations.CreateModel(
             name="AlertReceive",
             fields=[

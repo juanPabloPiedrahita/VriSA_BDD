@@ -1,9 +1,21 @@
 #!/usr/bin/env python
 """
-Script para poblar la base de datos con datos de prueba
-Ejecutar: docker compose exec backend python seed_data.py
-"""
+Seed script for populating the VRISA database with test data.
 
+This script creates:
+- Users (Admin, Researcher, Citizen)
+- Admin profiles
+- AuthUsers (authorized users)
+- Institutions
+- Monitoring stations
+- Devices
+- Sample alerts with pollutants
+
+Run with:
+    docker compose exec backend python seed_data.py
+
+Each function checks for existing records to avoid duplicates.
+"""
 import os
 import django
 
@@ -18,8 +30,12 @@ from django.contrib.gis.geos import Point
 
 
 def create_users():
-    """Crear usuarios de prueba"""
-    print("📝 Creando usuarios...")
+    """Create test users: Admin, Researcher, Citizen.
+
+    Returns:
+        tuple: (admin_user, researcher_user, citizen_user)
+    """
+    print("📝 Creating users...")
 
     # Admin user
     admin_user, created = User.objects.get_or_create(
@@ -66,36 +82,57 @@ def create_users():
 
 
 def create_admin_profiles(admin_user):
-    """Crear perfiles de administrador"""
-    print("\n👤 Creando perfiles admin...")
+    """Create admin profile for the given user.
+
+    Args:
+        admin_user (User): User instance with role 'admin'
+
+    Returns:
+        Admin: Admin profile instance
+    """
+    print("\n👤 Creating admin profiles...")
 
     admin, created = Admin.objects.get_or_create(
         user=admin_user,
         defaults={'access_level': 5}
     )
     if created:
-        print(f"  ✓ Admin profile creado para {admin.user.name}")
+        print(f"  ✓ Admin profile created for {admin.user.name}")
 
     return admin
 
 
 def create_auth_users(researcher_user):
-    """Crear usuarios autorizados"""
-    print("\n🔐 Creando usuarios autorizados...")
+    """Create AuthUser (authorized user) profile for a researcher.
+
+    Args:
+        researcher_user (User): User instance with role 'researcher'
+
+    Returns:
+        AuthUser: AuthUser instance
+    """
+    print("\n🔐 Creating authorized users...")
 
     auth_user, created = AuthUser.objects.get_or_create(
         user=researcher_user,
         defaults={'read_access': True}
     )
     if created:
-        print(f"  ✓ AuthUser creado para {auth_user.user.name}")
+        print(f"  ✓ AuthUser created for {auth_user.user.name}")
 
     return auth_user
 
 
 def create_institutions(admin):
-    """Crear instituciones"""
-    print("\n🏢 Creando instituciones...")
+    """Create sample institutions.
+
+    Args:
+        admin (Admin): Admin instance responsible for institutions
+
+    Returns:
+        list: List of Institution instances
+    """
+    print("\n Creating institutions...")
 
     institutions = []
 
@@ -127,19 +164,26 @@ def create_institutions(admin):
             }
         )
         if created:
-            print(f"  ✓ Institución: {inst.name}")
+            print(f"  ✓ Institution: {inst.name}")
         institutions.append(inst)
 
     return institutions
 
 
 def create_stations(institutions, admin):
-    """Crear estaciones de monitoreo"""
-    print("\n📍 Creando estaciones...")
+    """Create monitoring stations with sample coordinates.
+
+    Args:
+        institutions (list): List of Institution instances
+        admin (Admin): Admin responsible for stations
+
+    Returns:
+        list: List of Station instances
+    """
+    print("\n Creating stations...")
 
     stations = []
 
-    # Coordenadas reales de Cali
     station_data = [
         {
             'name': 'Estación Centro',
@@ -202,38 +246,44 @@ def create_stations(institutions, admin):
             }
         )
         if created:
-            print(f"  ✓ Estación: {station.name} ({station.status})")
+            print(f"  ✓ Station: {station.name} ({station.status})")
         stations.append(station)
 
     return stations
 
 
 def create_devices(stations):
-    """Crear dispositivos"""
-    print("\n🔬 Creando dispositivos...")
+    """Create sample devices for each station.
+
+    Args:
+        stations (list): List of Station instances
+
+    Returns:
+        list: List of Device instances
+    """
+    print("\n🔬 Creating devices...")
 
     devices = []
-    device_types = ['SENSOR', 'METEO', 'OTHER']
 
-    for i, station in enumerate(stations):
+    for station in stations:
         # PM2.5 sensor
         device, created = Device.objects.get_or_create(
             serial_number=f'PM25-{station.id:03d}',
             defaults={
-                'description': 'Sensor de material particulado PM2.5',
+                'description': 'PM2.5 sensor',
                 'type': 'SENSOR',
                 'station': station
             }
         )
         if created:
-            print(f"  ✓ Device: {device.serial_number} en {station.name}")
+            print(f"  ✓ Device: {device.serial_number} in {station.name}")
             devices.append(device)
 
         # NO2 sensor
         device, created = Device.objects.get_or_create(
             serial_number=f'NO2-{station.id:03d}',
             defaults={
-                'description': 'Sensor de dióxido de nitrógeno',
+                'description': 'NO2 sensor',
                 'type': 'SENSOR',
                 'station': station
             }
@@ -245,7 +295,7 @@ def create_devices(stations):
         device, created = Device.objects.get_or_create(
             serial_number=f'METEO-{station.id:03d}',
             defaults={
-                'description': 'Estación meteorológica',
+                'description': 'Weather station',
                 'type': 'METEO',
                 'station': station
             }
@@ -257,88 +307,83 @@ def create_devices(stations):
 
 
 def create_alerts(stations):
-    """Crear alertas de prueba"""
-    print("\n🚨 Creando alertas...")
+    """Create sample alerts with pollutants.
+
+    Args:
+        stations (list): List of Station instances
+
+    Returns:
+        list: List of Alert instances
+    """
+    print("\n Creating alerts...")
 
     alerts = []
 
-    # Alerta crítica en Centro
+    # Critical alert at first station
     alert, created = Alert.objects.get_or_create(
         station=stations[0],
         attended=False
     )
     if created:
-        AlertPollutant.objects.create(
-            alert=alert,
-            pollutant='PM25',
-            level=75.5  # Nivel alto
-        )
-        AlertPollutant.objects.create(
-            alert=alert,
-            pollutant='NO2',
-            level=65.2
-        )
-        print(f"  ✓ Alerta crítica en {stations[0].name}")
+        AlertPollutant.objects.create(alert=alert, pollutant='PM25', level=75.5)
+        AlertPollutant.objects.create(alert=alert, pollutant='NO2', level=65.2)
+        print(f"  ✓ Critical alert at {stations[0].name}")
         alerts.append(alert)
 
-    # Alerta moderada en Unicentro
+    # Moderate alert at second station
     alert, created = Alert.objects.get_or_create(
         station=stations[1],
         attended=True
     )
     if created:
-        AlertPollutant.objects.create(
-            alert=alert,
-            pollutant='O3',
-            level=45.3
-        )
-        print(f"  ✓ Alerta (atendida) en {stations[1].name}")
+        AlertPollutant.objects.create(alert=alert, pollutant='O3', level=45.3)
+        print(f"  ✓ Alert (attended) at {stations[1].name}")
         alerts.append(alert)
 
     return alerts
 
 
 def main():
-    """Función principal"""
+    """Main function to execute all seed tasks."""
     print("=" * 60)
-    print("🌱 VRISA - Seed Data Script")
+    print(" VRISA - Seed Data Script")
     print("=" * 60)
 
     try:
-        # 1. Usuarios
+        # Users
         admin_user, researcher_user, citizen_user = create_users()
 
-        # 2. Perfiles
+        # Profiles
         admin = create_admin_profiles(admin_user)
         auth_user = create_auth_users(researcher_user)
 
-        # 3. Instituciones
+        # Institutions
         institutions = create_institutions(admin)
 
-        # 4. Estaciones
+        # Stations
         stations = create_stations(institutions, admin)
 
-        # 5. Dispositivos
+        # Devices
         devices = create_devices(stations)
 
-        # 6. Alertas
+        # Alerts
         alerts = create_alerts(stations)
 
-        # Resumen
+        # Summary
         print("\n" + "=" * 60)
-        print("✅ RESUMEN:")
-        print(f"  - Usuarios: {User.objects.count()}")
+        print(" SUMMARY:")
+        print(f"  - Users: {User.objects.count()}")
         print(f"  - Admins: {Admin.objects.count()}")
         print(f"  - AuthUsers: {AuthUser.objects.count()}")
-        print(f"  - Instituciones: {Institution.objects.count()}")
-        print(f"  - Estaciones: {Station.objects.count()}")
-        print(f"  - Dispositivos: {Device.objects.count()}")
-        print(f"  - Alertas: {Alert.objects.count()}")
+        print(f"  - Institutions: {Institution.objects.count()}")
+        print(f"  - Stations: {Station.objects.count()}")
+        print(f"  - Devices: {Device.objects.count()}")
+        print(f"  - Alerts: {Alert.objects.count()}")
         print("=" * 60)
-        print("✅ Datos cargados exitosamente!")
+        print(" Data loaded successfully!")
 
-        # Información de login
-        print("\n📋 CREDENCIALES DE PRUEBA:")
+        # Test credentials
+        print("\n TEST CREDENTIALS:")
         print("  Admin:")
         print("    Email: admin@vrisa.com")
         print("    Password: admin123")
@@ -351,7 +396,7 @@ def main():
         print("=" * 60)
 
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\n Error: {e}")
         import traceback
         traceback.print_exc()
 

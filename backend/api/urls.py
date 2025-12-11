@@ -1,3 +1,12 @@
+"""
+API URL Configuration.
+
+This module registers:
+- Routers for all ViewSets
+- Authentication endpoints
+- A complete summary of all available API endpoints
+"""
+
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
@@ -39,7 +48,8 @@ router.register(r'station-consults', StationConsultViewSet, basename='stationcon
 
 urlpatterns = [
     # Authentication endpoints
-    path('auth/login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('auth/login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair')
+    ,
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/register/', register_user, name='register'),
     path('auth/logout/', logout_user, name='logout'),
@@ -115,7 +125,7 @@ Alerts:
 - GET    /api/alerts/{id}/           - Get alert detail
 - PUT    /api/alerts/{id}/           - Update alert
 - DELETE /api/alerts/{id}/           - Delete alert
-- POST   /api/alerts/{id}/pollutants/  - Add pollutants to alert ⭐
+- POST   /api/alerts/{id}/pollutants/  - Add pollutants to alert
 - POST   /api/alerts/{id}/mark-attended/  - Mark alert as attended
 - POST   /api/alerts/{id}/notify/    - Record who received alert
 

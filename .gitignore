@@ -1,4 +1,45 @@
-/mobile/node_modules/@react-native/debugger-frontend/dist/third-party/front_end/models/crux-manager/crux-manager.js
+# --- GENERALES ---
+*.log
+*.env
+*.env.local
+.env*
+.DS_Store
 
+# --- PYTHON / DJANGO ---
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.pyc
 
-infra/vrisa_test_script.sh #Este archivo es una serie de comandos para probar el backend de VRISA
+# Virtualenv
+venv/
+env/
+.venv/
+
+# Django migrations cache (solo pycache, no las migraciones mismas)
+**/migrations/__pycache__/
+
+# --- NODE / REACT NATIVE ---
+mobile/node_modules/
+mobile/.expo/
+mobile/.expo-shared/
+mobile/yarn.lock (si usas npm)
+mobile/package-lock.json (si usas yarn)
+
+# Metro bundler cache
+mobile/.metro-cache/
+
+# Android
+mobile/android/.gradle/
+mobile/android/app/build/
+
+# iOS
+mobile/ios/Pods/
+mobile/ios/build/
+
+# --- DOCKER ---
+*.pid
+*.tar
+
+# --- ARCHIVOS DE PRUEBAS / SCRIPTS ---
+infra/vrisa_test_script.sh

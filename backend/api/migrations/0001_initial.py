@@ -1,13 +1,44 @@
-# Migración manual actualizada para soportar AUTH_USER_MODEL
+"""
+Custom Django migration to initialize the VRISA database schema.
+
+This migration performs the following tasks:
+
+1. Creates PostgreSQL extensions required for GIS support and UUID generation.
+2. Creates custom PostgreSQL ENUM types used by the application.
+3. Defines manual SQL tables with composite primary keys (`alert_receives`, `station_consults`).
+4. Creates triggers to automatically update the `updated_at` timestamp on Station updates.
+5. Creates all core Django models for:
+   - User (custom AUTH model)
+   - Admin profiles
+   - AuthUser profiles
+   - Institutions
+   - Stations (with GIS fields)
+   - Devices
+   - Alerts
+   - AlertPollutants
+6. Creates indexes for performance optimization.
+
+Notes:
+    - This migration is tightly coupled to Django's auth system.
+    - The SQL operations are idempotent (`IF NOT EXISTS`) to avoid re-execution errors.
+    - GIS fields require PostGIS to be enabled in the database.
+"""
+
 from django.db import migrations, models
 import django.contrib.gis.db.models.fields
 import django.db.models.deletion
 
+# -----------------------------
+# SQL: Extensions
+# -----------------------------
 SQL_CREATE_EXTENSIONS = """
 CREATE EXTENSION IF NOT EXISTS postgis;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 """
 
+# -----------------------------
+# SQL: Custom PostgreSQL ENUM types
+# -----------------------------
 SQL_CREATE_ENUMS = """
 DO $$
 BEGIN
@@ -20,6 +51,9 @@ BEGIN
 END$$;
 """
 
+# -----------------------------
+# SQL: Custom Many-to-Many tables
+# -----------------------------
 SQL_CREATE_ALERT_RECEIVES = """
 CREATE TABLE IF NOT EXISTS alert_receives (
     auth_user_id integer NOT NULL REFERENCES api_authuser(id) ON DELETE CASCADE,
@@ -38,6 +72,9 @@ CREATE TABLE IF NOT EXISTS station_consults (
 );
 """
 
+# -----------------------------
+# SQL: Trigger to update updated_at
+# -----------------------------
 SQL_TRIGGER_UPDATED_AT = """
 CREATE OR REPLACE FUNCTION trg_set_updated_at()
 RETURNS TRIGGER AS $$
@@ -56,41 +93,54 @@ FOR EACH ROW
 EXECUTE FUNCTION trg_set_updated_at();
 """
 
+
 class Migration(migrations.Migration):
+    """
+    Initial migration to set up the VRISA database schema.
+
+    This migration:
+    - Creates extensions, enums, triggers, and custom M2M tables.
+    - Defines all core models for the system.
+    - Sets up indexes to improve query performance.
+
+    Dependencies:
+        - Relies on Django's built-in auth system being initialized first.
+
+    """
 
     initial = True
 
     dependencies = [
-        ('auth', '0012_alter_user_first_name_max_length'),  # ← IMPORTANTE: Dependencia de auth
+        ('auth', '0012_alter_user_first_name_max_length'),
     ]
 
+    # -----------------------------
+    # Main Operations
+    # -----------------------------
     operations = [
         migrations.RunSQL(SQL_CREATE_EXTENSIONS),
         migrations.RunSQL(SQL_CREATE_ENUMS),
 
-        # User - Now compatible with Django Auth
+        # -------------------------
+        # User
+        # -------------------------
         migrations.CreateModel(
             name='User',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('password', models.CharField(max_length=128, verbose_name='password', db_column='password_hash')),  # ← Agregado
-                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),  # ← Agregado
-                ('is_superuser', models.BooleanField(default=False)),  # ← Agregado
+                ('password', models.CharField(max_length=128, verbose_name='password', db_column='password_hash')),
+                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
+                ('is_superuser', models.BooleanField(default=False)),
                 ('name', models.CharField(max_length=100)),
                 ('email', models.EmailField(max_length=100, unique=True)),
                 ('role', models.CharField(default='citizen', max_length=50)),
-                ('is_active', models.BooleanField(default=True)),  # ← Agregado
-                ('is_staff', models.BooleanField(default=False)),  # ← Agregado
+                ('is_active', models.BooleanField(default=True)),
+                ('is_staff', models.BooleanField(default=False)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
             ],
-            options={
-                'db_table': 'api_user',
-                'abstract': False,
-            },
-            managers=[
-                ('objects', models.Manager()),
-            ],
+            options={'db_table': 'api_user'},
+            managers=[('objects', models.Manager())],
         ),
 
         # Admins
@@ -100,9 +150,11 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('access_level', models.IntegerField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, 
-                                              to='api.user', 
-                                              related_name='admin_profile')),
+                ('user', models.OneToOneField(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='api.user',
+                    related_name='admin_profile'
+                )),
             ],
         ),
 
@@ -113,9 +165,11 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('read_access', models.BooleanField(default=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, 
-                                              to='api.user',
-                                              related_name='auth_profile')),
+                ('user', models.OneToOneField(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='api.user',
+                    related_name='auth_profile'
+                )),
             ],
         ),
 
@@ -128,13 +182,15 @@ class Migration(migrations.Migration):
                 ('address', models.CharField(max_length=200, null=True, blank=True)),
                 ('verified', models.BooleanField(default=False)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('admin', models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, 
-                                           to='api.admin',
-                                           related_name='institutions')),
+                ('admin', models.ForeignKey(
+                    on_delete=django.db.models.deletion.RESTRICT,
+                    to='api.admin',
+                    related_name='institutions'
+                )),
             ],
         ),
 
-        # Station
+        # Stations
         migrations.CreateModel(
             name='Station',
             fields=[
@@ -147,14 +203,18 @@ class Migration(migrations.Migration):
                 ('status', models.CharField(default='inactive', max_length=32)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('admin', models.ForeignKey(on_delete=django.db.models.deletion.SET_NULL, 
-                                           to='api.admin', 
-                                           null=True, 
-                                           blank=True,
-                                           related_name='stations')),
-                ('institution', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, 
-                                                 to='api.institution',
-                                                 related_name='stations')),
+                ('admin', models.ForeignKey(
+                    on_delete=django.db.models.deletion.SET_NULL,
+                    to='api.admin',
+                    null=True,
+                    blank=True,
+                    related_name='stations'
+                )),
+                ('institution', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='api.institution',
+                    related_name='stations'
+                )),
             ],
         ),
 
@@ -168,9 +228,11 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(null=True, blank=True)),
                 ('type', models.CharField(max_length=20)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('station', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, 
-                                             to='api.station',
-                                             related_name='devices')),
+                ('station', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='api.station',
+                    related_name='devices'
+                )),
             ],
         ),
 
@@ -182,9 +244,11 @@ class Migration(migrations.Migration):
                 ('alert_date', models.DateTimeField(auto_now_add=True)),
                 ('attended', models.BooleanField(default=False)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('station', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, 
-                                             to='api.station',
-                                             related_name='alerts')),
+                ('station', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='api.station',
+                    related_name='alerts'
+                )),
             ],
         ),
 
@@ -196,21 +260,23 @@ class Migration(migrations.Migration):
                 ('pollutant', models.CharField(max_length=10)),
                 ('level', models.FloatField()),
                 ('recorded_at', models.DateTimeField(auto_now_add=True)),
-                ('alert', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, 
-                                           to='api.alert',
-                                           related_name='pollutants')),
+                ('alert', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='api.alert',
+                    related_name='pollutants'
+                )),
             ],
         ),
 
-        # Many-to-many tables with composite PKs
+        # Custom SQL tables
         migrations.RunSQL(SQL_CREATE_ALERT_RECEIVES),
         migrations.RunSQL(SQL_CREATE_STATION_CONSULTS),
 
-        # Trigger for updated_at
+        # Triggers
         migrations.RunSQL(SQL_TRIGGER_UPDATED_AT),
         migrations.RunSQL(SQL_CREATE_TRIGGER_ON_STATIONS),
 
-        # Indices
+        # Indexes
         migrations.RunSQL("CREATE INDEX IF NOT EXISTS idx_users_email ON api_user(email);"),
         migrations.RunSQL("CREATE INDEX IF NOT EXISTS idx_stations_institution ON api_station(institution_id);"),
         migrations.RunSQL("CREATE INDEX IF NOT EXISTS idx_devices_station ON api_device(station_id);"),

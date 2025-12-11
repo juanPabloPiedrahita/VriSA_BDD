@@ -2,82 +2,104 @@ from rest_framework import permissions
 
 
 class IsAdmin(permissions.BasePermission):
-    """Only users with admin_profile can access"""
-    
+    """
+    Allows access only to users who have an admin_profile.
+
+    Used for endpoints restricted exclusively to admin users.
+    """
+
     def has_permission(self, request, view):
         return (
-            request.user and 
-            request.user.is_authenticated and 
+            request.user and
+            request.user.is_authenticated and
             hasattr(request.user, 'admin_profile')
         )
 
 
 class IsAuthUser(permissions.BasePermission):
-    """Only users with auth_profile can access"""
-    
+    """
+    Allows access only to users who have an auth_profile.
+
+    Used when an authenticated non-admin user is required.
+    """
+
     def has_permission(self, request, view):
         return (
-            request.user and 
-            request.user.is_authenticated and 
+            request.user and
+            request.user.is_authenticated and
             hasattr(request.user, 'auth_profile')
         )
 
 
 class IsAdminOrAuthUser(permissions.BasePermission):
-    """Admin or AuthUser can access"""
-    
+    """
+    Allows access to both admin users and auth users.
+
+    Useful for endpoints where both types of profiles are valid.
+    """
+
     def has_permission(self, request, view):
         if not (request.user and request.user.is_authenticated):
             return False
         return (
-            hasattr(request.user, 'admin_profile') or 
+            hasattr(request.user, 'admin_profile') or
             hasattr(request.user, 'auth_profile')
         )
 
 
 class IsAdminOrReadOnly(permissions.BasePermission):
-    """Admins can edit, others can only read"""
-    
+    """
+    Grants full permissions to admin users.
+    Non-admins only have read-only access (safe methods).
+    """
+
     def has_permission(self, request, view):
         if request.method in permissions.SAFE_METHODS:
             return True
         return (
-            request.user and 
-            request.user.is_authenticated and 
+            request.user and
+            request.user.is_authenticated and
             hasattr(request.user, 'admin_profile')
         )
 
 
 class IsInstitutionAdmin(permissions.BasePermission):
-    """Only the admin of the institution can modify it"""
-    
+    """
+    Restricts modification of an institution to its own admin.
+    Read-only access is allowed for all authenticated users.
+    """
+
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
-        
+
         if not (request.user and request.user.is_authenticated):
             return False
-        
+
         if not hasattr(request.user, 'admin_profile'):
             return False
-        
-        # Check if user's admin profile matches the institution's admin
+
+        # Check if the user's admin profile matches the institution's admin
         return obj.admin == request.user.admin_profile
 
 
 class IsStationAdmin(permissions.BasePermission):
-    """Only the station's admin can modify it"""
-    
+    """
+    Restricts modification of a station to:
+    - the station's own admin, or
+    - the admin of the institution that owns the station.
+    """
+
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
-        
+
         if not (request.user and request.user.is_authenticated):
             return False
-        
+
         if not hasattr(request.user, 'admin_profile'):
             return False
-        
+
         # Station admin or institution admin
         return (
             obj.admin == request.user.admin_profile or
@@ -86,13 +108,19 @@ class IsStationAdmin(permissions.BasePermission):
 
 
 class CanAccessStation(permissions.BasePermission):
-    """Auth users can only access stations they have been granted access to"""
-    
+    """
+    Controls access to station objects:
+
+    - Admin users have full access.
+    - Auth users can only access stations they've been explicitly granted
+      via StationConsult.
+    """
+
     def has_object_permission(self, request, view, obj):
         # Admins have full access
         if hasattr(request.user, 'admin_profile'):
             return True
-        
+
         # Auth users need explicit access via station_consults
         if hasattr(request.user, 'auth_profile'):
             from .models import StationConsult
@@ -100,20 +128,24 @@ class CanAccessStation(permissions.BasePermission):
                 auth_user=request.user.auth_profile,
                 station=obj
             ).exists()
-        
+
         return False
 
 
 class IsOwnerOrAdmin(permissions.BasePermission):
-    """User can access their own data, admins can access all"""
-    
+    """
+    Allows access to:
+    - Admin users (full access)
+    - The owner of the object (if the object has a 'user' attribute)
+    """
+
     def has_object_permission(self, request, view, obj):
         # Admins can access everything
         if hasattr(request.user, 'admin_profile'):
             return True
-        
+
         # Users can access their own data
         if hasattr(obj, 'user'):
             return obj.user == request.user
-        
+
         return False
